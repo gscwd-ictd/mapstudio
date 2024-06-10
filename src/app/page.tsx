@@ -1,4 +1,4 @@
-import { Button } from "@mapstudio/lib/components/ui/button";
+import { Button } from "@mapstudio/lib/components/ui/Button";
 
 export default function Home() {
   return (
