@@ -1,7 +1,9 @@
+import { Button } from "@mapstudio/lib/components/ui/button";
+
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, aut?
+    <main className="flex h-screen w-screen justify-center items-center">
+      <Button>Test</Button>
     </main>
   );
 }
