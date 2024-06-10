@@ -9,3 +9,10 @@ yarn-debug.log*
 yarn-error.log*
 .next
 .git
+.github
+
+# Test files
+.storybook
+e2e
+playwright-report
+test-results
