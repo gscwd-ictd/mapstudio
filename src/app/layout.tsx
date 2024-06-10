@@ -1,6 +1,8 @@
-import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import type { PropsWithChildren } from "react";
+import { Inter } from "next/font/google";
+import { ThemeProvider, QueryClientProvider } from "@mapstudio/lib/providers";
+import { Toaster } from "@mapstudio/lib/components/ui";
 import "@mapstudio/styles/tailwind.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -13,7 +15,17 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className} h-screen w-screen overflow-x-hidden overflow-y-hidden`}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <QueryClientProvider>{children}</QueryClientProvider>
+        </ThemeProvider>
+        <Toaster />
+      </body>
     </html>
   );
 }
