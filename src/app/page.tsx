@@ -1,10 +1,12 @@
 "use client";
 
-import { BlockQuote } from "@mapstudio/lib/components/typography/block-quote";
-import { Heading } from "@mapstudio/lib/components/typography/heading";
-import { InlineCode } from "@mapstudio/lib/components/typography/inline-code";
-import { Leading } from "@mapstudio/lib/components/typography/leading";
-import { Paragraph } from "@mapstudio/lib/components/typography/paragraph";
+import {
+  BlockQuote,
+  Heading,
+  InlineCode,
+  Leading,
+  Paragraph,
+} from "@mapstudio/lib/components/typography";
 import {
   SheetTrigger,
   SheetContent,
