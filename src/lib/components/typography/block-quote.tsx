@@ -1,14 +1,9 @@
-import { BlockquoteHTMLAttributes, forwardRef } from "react";
+import type { FunctionComponent, PropsWithChildren } from "react";
 
-export const BlockQuote = forwardRef<
-  HTMLQuoteElement,
-  Omit<BlockquoteHTMLAttributes<HTMLQuoteElement>, "className">
->(({ children, ...props }, ref) => {
-  return (
-    <blockquote ref={ref} {...props} className="mt-6 border-l-2 pl-6 italic">
-      {children}
-    </blockquote>
-  );
-});
+type BlockQuoteProps = PropsWithChildren & {
+  italic?: boolean;
+};
 
-BlockQuote.displayName = "BlockQuote";
+export const BlockQuote: FunctionComponent<BlockQuoteProps> = ({ children, italic = true }) => {
+  return <blockquote className={`mt-6 border-l-2 pl-6 ${italic ? "italic" : ""}`}>{children}</blockquote>;
+};

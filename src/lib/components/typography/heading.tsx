@@ -1,48 +1,25 @@
-import { HTMLAttributes, forwardRef } from "react";
+import type { FunctionComponent, PropsWithChildren } from "react";
 
-type HeadingProps = Omit<HTMLAttributes<HTMLHeadingElement>, "className"> & {
-  as?: "h1" | "h2" | "h3" | "h4";
-  children: React.ReactNode;
+type HeadingProps = PropsWithChildren & {
+  level: "h1" | "h2" | "h3" | "h4";
 };
 
-export const Heading = forwardRef<HTMLHeadingElement, HeadingProps>(
-  ({ as = "h4", children, ...props }, ref) => {
-    if (as === "h1") {
-      return (
-        <h1
-          ref={ref}
-          {...props}
-          className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl"
-        >
-          {children}
-        </h1>
-      );
+export const Heading: FunctionComponent<HeadingProps> = ({ level, children }) => {
+  switch (level) {
+    case "h1": {
+      return <h1 className="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">{children}</h1>;
     }
 
-    if (as === "h2") {
-      return (
-        <h2 ref={ref} {...props} className="scroll-m-20 text-3xl font-semibold tracking-tight">
-          {children}
-        </h2>
-      );
+    case "h2": {
+      return <h2 className="scroll-m-20 pb-2 text-3xl font-semibold tracking-tight first:mt-0">{children}</h2>;
     }
 
-    if (as === "h3") {
-      return (
-        <h3 ref={ref} {...props} className="scroll-m-20 text-2xl font-semibold tracking-tight">
-          {children}
-        </h3>
-      );
+    case "h3": {
+      return <h3 className="scroll-m-20 text-2xl font-semibold tracking-tight">{children}</h3>;
     }
 
-    if (as === "h4") {
-      return (
-        <h4 ref={ref} {...props} className="scroll-m-20 text-xl font-semibold tracking-tight">
-          {children}
-        </h4>
-      );
+    case "h4": {
+      return <h4 className="scroll-m-20 text-xl font-semibold tracking-tight">{children}</h4>;
     }
   }
-);
-
-Heading.displayName = "Heading";
+};
