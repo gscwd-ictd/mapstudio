@@ -1,7 +1,7 @@
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 import type { PropsWithChildren } from "react";
-import "../../styles/tailwind.css";
+import "@mapstudio/styles";
 
 const inter = Inter({ subsets: ["latin"] });
 
