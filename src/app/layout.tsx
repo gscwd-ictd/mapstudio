@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import type { PropsWithChildren } from "react";
 import { Inter } from "next/font/google";
 import { ThemeProvider, QueryClientProvider } from "@mapstudio/lib/providers";
-import { Toaster } from "@mapstudio/lib/components/ui";
+import { SonnerToast, Toaster } from "@mapstudio/lib/components/ui";
 import "@mapstudio/styles/tailwind.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -25,6 +25,7 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
           <QueryClientProvider>{children}</QueryClientProvider>
         </ThemeProvider>
         <Toaster />
+        <SonnerToast />
       </body>
     </html>
   );

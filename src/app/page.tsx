@@ -23,6 +23,7 @@ import {
 import { useToast } from "@mapstudio/lib/components/ui/use-toast";
 import { useRQDevtoolsInProd } from "@mapstudio/lib/zustand/useRQDevtoolsProd";
 import { useTheme } from "next-themes";
+import { toast as sonnerToast } from "sonner";
 
 export default function Home() {
   const { setTheme } = useTheme();
@@ -61,6 +62,19 @@ export default function Home() {
           }}
         >
           Toast
+        </Button>
+
+        <Button
+          onClick={() => {
+            sonnerToast("Event has been created", {
+              action: {
+                label: "Undo",
+                onClick: () => console.log("Undo"),
+              },
+            });
+          }}
+        >
+          Sonner Toast
         </Button>
 
         <Sheet>
