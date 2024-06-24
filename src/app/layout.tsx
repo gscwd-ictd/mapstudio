@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import { ThemeProvider, QueryClientProvider } from "@mapstudio/lib/providers";
 import { SonnerToast, Toaster } from "@mapstudio/lib/components/ui";
 import "@mapstudio/styles/tailwind.css";
+import "@mapstudio/styles/ol.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
