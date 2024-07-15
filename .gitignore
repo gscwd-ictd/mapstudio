@@ -6,6 +6,9 @@
 .pnp.js
 .yarn/install-state.gz
 
+# certs
+/certificates
+
 # testing
 /coverage
 
@@ -41,3 +44,5 @@ next-env.d.ts
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+certificates
