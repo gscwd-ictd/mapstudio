@@ -7,5 +7,10 @@ export default defineConfig({
   test: {
     environment: "jsdom",
     exclude: [...configDefaults.exclude, "./e2e"],
+    coverage: {
+      reporter: ["text", "json-summary", "json", "html"],
+      include: ["./src/lib/components/features"],
+      reportOnFailure: true
+    }
   },
 });

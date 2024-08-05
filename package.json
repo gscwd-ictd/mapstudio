@@ -9,6 +9,7 @@
     "lint": "next lint",
     "test:vite": "vitest",
     "test:vite-ui": "vitest --ui",
+    "test:vite-coverage": "npx vitest --coverage.enabled true",
     "test:e2e": "npx playwright test --ui"
   },
   "engines": {
