@@ -9,7 +9,9 @@ export const GrowthBookClientProvider: FunctionComponent<PropsWithChildren> = ({
     return new GrowthBook({
       apiHost: config.host,
       clientKey: config.clientKey,
-      enableDevMode: config.devMode,
+      attributes: {
+        // TODO: set attributes here
+      },
     });
   });
 
