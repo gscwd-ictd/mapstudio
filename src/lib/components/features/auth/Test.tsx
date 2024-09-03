@@ -1,3 +1,7 @@
+"use client";
+
+import { IfFeatureEnabled } from "@growthbook/growthbook-react";
+
 export const Test = () => {
-  return <button>Test</button>;
+  return <IfFeatureEnabled feature="my_feature">test</IfFeatureEnabled>;
 };

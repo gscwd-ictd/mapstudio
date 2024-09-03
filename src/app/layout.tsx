@@ -1,10 +1,15 @@
+import "@mapstudio/styles/tailwind.css";
+import "@mapstudio/styles/ol.css";
+
 import type { Metadata } from "next";
 import type { PropsWithChildren } from "react";
 import { Inter } from "next/font/google";
-import { ThemeProvider, QueryClientProvider } from "@mapstudio/lib/providers";
 import { SonnerToast, Toaster } from "@mapstudio/lib/components/ui";
-import "@mapstudio/styles/tailwind.css";
-import "@mapstudio/styles/ol.css";
+import {
+  ThemeProvider,
+  QueryClientProvider,
+  GrowthBookClientProvider,
+} from "@mapstudio/lib/providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -23,7 +28,9 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
           enableSystem
           disableTransitionOnChange
         >
-          <QueryClientProvider>{children}</QueryClientProvider>
+          <QueryClientProvider>
+            <GrowthBookClientProvider>{children}</GrowthBookClientProvider>
+          </QueryClientProvider>
         </ThemeProvider>
         <Toaster />
         <SonnerToast />

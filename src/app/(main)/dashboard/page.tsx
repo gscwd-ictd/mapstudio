@@ -1,3 +1,5 @@
-export default function Dashboard() {
-  return <h1>Dashboard</h1>;
+import { Test } from "@mapstudio/lib/components/features/auth/Test";
+
+export default async function Dashboard() {
+  return <Test />;
 }
