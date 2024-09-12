@@ -6,3 +6,35 @@
   bottom: 0;
   width: 100%;
 }
+
+#map .ol-zoom {
+  top: 10px;
+  left: auto;
+  right: 10px;
+
+}
+
+#map .ol-zoomslider  {
+  top: 80px;
+  left: auto;
+  right: 10px;
+
+}
+
+.base-layers {
+  position: absolute;
+  bottom: 20;
+  right: 20;
+  z-index: 999;
+}
+
+.sidebar {
+  position: absolute;
+  z-index: 999;
+  left: 0;
+}
+
+.coordinates-container {
+  position: absolute;
+  bottom: 0;
+}
