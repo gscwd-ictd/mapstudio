@@ -1,6 +1,6 @@
 "use client";
 
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useEffect } from "react";
 
 import Map from "ol/Map";
 import View from "ol/View";
@@ -12,7 +12,7 @@ import { defaults as defaultControls } from "ol/control.js";
 
 import NavSidebar from "./NavSidebar";
 import BaseLayerPicker from "./BaseLayerPicker";
-import { useMapStore } from "@mapstudio/store/map.store";
+import { useMapStore } from "@mapstudio/lib/store/useMapStore";
 
 const MapComponent: FunctionComponent = () => {
   const gensanLatLong = [13933982.685607675, 682010.0185691282];

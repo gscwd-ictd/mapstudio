@@ -1,6 +1,6 @@
 "use client";
 
-import { useMapStore } from "@mapstudio/store/map.store";
+import { useMapStore } from "@mapstudio/lib/store/useMapStore";
 import { isEmpty } from "lodash";
 import { FunctionComponent, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";

@@ -2,9 +2,12 @@
 
 import React from "react";
 import { type FunctionComponent, type PropsWithChildren, useEffect, useState } from "react";
-import { QueryClient, QueryClientProvider as ReactQueryClientProvider } from "@tanstack/react-query";
+import {
+  QueryClient,
+  QueryClientProvider as ReactQueryClientProvider,
+} from "@tanstack/react-query";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { useRQDevtoolsInProd } from "@mapstudio/lib/zustand/useRQDevtoolsProd";
+import { useRQDevtoolsInProd } from "@mapstudio/lib/store/useRQDevtoolsProd";
 
 const ReactQueryDevtoolsProduction = React.lazy(() =>
   import("@tanstack/react-query-devtools/build/modern/production.js").then((d) => ({
