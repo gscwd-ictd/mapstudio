@@ -1,32 +1,30 @@
 @import url("../../node_modules/ol/ol.css");
 
-#map {
+#mainMap {
   position: absolute;
   top: 0;
   bottom: 0;
   width: 100%;
 }
 
-#map .ol-zoom {
+#mainMap .ol-zoom {
   top: 10px;
   left: auto;
   right: 10px;
-
 }
 
-#map .ol-zoomslider  {
+#mainMap .ol-zoomslider {
   top: 80px;
   left: auto;
   right: 10px;
-
 }
 
-.base-layers {
+/* .base-layers {
   position: absolute;
   bottom: 20;
   right: 20;
   z-index: 999;
-}
+} */
 
 .sidebar {
   position: absolute;

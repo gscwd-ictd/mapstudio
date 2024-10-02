@@ -1,1 +1,1 @@
-export * from "./BaseLayers";
+export * from "./baseLayerOptions.enum";

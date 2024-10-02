@@ -1,3 +1,7 @@
+import { BaseLayerOptions } from "@mapstudio/app/utils/enums";
+import TileLayer from "ol/layer/Tile";
+import TileSource from "ol/source/Tile";
+
 type ViewPort = {
   center: [number, number];
   zoom: number;
@@ -5,7 +9,7 @@ type ViewPort = {
   minZoom?: number;
 };
 
-type TileLayer = {
+type TileLayerType = {
   attributions: string;
   url: string;
   layers: string;
@@ -14,7 +18,7 @@ type TileLayer = {
   className: string;
 };
 
-type LayerVisibility = Pick<TileLayer, "className" | "visible">;
+type LayerVisibility = Pick<TileLayerType, "className" | "visible">;
 
 type MapVectorLayers = {
   layersVisibility: Array<LayerVisibility>;
@@ -33,12 +37,18 @@ type DataStores = {
   dataStores: DataStore;
 };
 
+type BaseMapConfig = {
+  title: BaseLayerOptions;
+  layer: TileLayer<TileSource>;
+};
+
 export type {
   ViewPort,
-  TileLayer,
+  TileLayerType,
   LayerVisibility,
   MapVectorLayers,
   GeoserverLayer,
   DataStore,
   DataStores,
+  BaseMapConfig,
 };

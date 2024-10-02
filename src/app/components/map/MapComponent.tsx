@@ -1,45 +1,46 @@
 "use client";
 
-import { FunctionComponent, useEffect, useRef, useState } from "react";
-import axios from "axios";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import useMap from "@mapstudio/hooks/useMap";
+import { useEffect, type FunctionComponent } from "react";
+// import axios from "axios";
+// import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
-import Map from "ol/Map";
-import View from "ol/View";
-import TileLayer from "ol/layer/Tile";
-import BingMaps from "ol/source/BingMaps.js";
-import { OSM, TileWMS, Vector as VectorSource } from "ol/source";
-import { Vector as VectorLayer } from "ol/layer";
-import ZoomSlider from "ol/control/ZoomSlider.js";
-import { defaults as defaultControls } from "ol/control.js";
+// import Map from "ol/Map";
+// import View from "ol/View";
+// import TileLayer from "ol/layer/Tile";
+// import BingMaps from "ol/source/BingMaps.js";
+// import { OSM, TileWMS, Vector as VectorSource } from "ol/source";
+// import { Vector as VectorLayer } from "ol/layer";
+// import ZoomSlider from "ol/control/ZoomSlider.js";
+// import { defaults as defaultControls } from "ol/control.js";
 
 import NavSidebar from "./NavSidebar";
 import BaseLayerPicker from "./BaseLayerPicker";
-import { useMapStore } from "@mapstudio/lib/store/useMapStore";
-import { VectorLayers } from "@mapstudio/app/utils/enums";
-import { isEmpty } from "lodash";
-import Feature from "ol/Feature";
-import { Point } from "ol/geom";
-import { fromLonLat, toLonLat } from "ol/proj";
-import Style from "ol/style/Style";
-import Icon from "ol/style/Icon";
-import MarkerIcon from "../../../../public/images/map-pin.png";
-import { DataStores, GeoserverLayer } from "@mapstudio/app/utils/types";
-import useMap from "@mapstudio/hooks/useMap";
+// import { useMapStore } from "@mapstudio/lib/store/useMapStore";
+// import { VectorLayers } from "@mapstudio/app/utils/enums";
+// import { isEmpty } from "lodash";
+// import Feature from "ol/Feature";
+// import { Point } from "ol/geom";
+// import { fromLonLat, toLonLat } from "ol/proj";
+// import Style from "ol/style/Style";
+// import Icon from "ol/style/Icon";
+// import MarkerIcon from "../../../../public/images/map-pin.png";
+// import { DataStores, GeoserverLayer } from "@mapstudio/app/utils/types";
+// import useMap from "@mapstudio/hooks/useMap";
 
 const MapComponent: FunctionComponent = () => {
-  const mapRef = useRef<HTMLDivElement>(null);
-  const [map, setMap] = useState<Map | null>(null);
+  // const mapRef = useRef<HTMLDivElement>(null);
+  // const [map, setMap] = useState<Map | null>(null);
 
-  // Zustand initialization
-  const { Viewport } = useMapStore((state) => ({
-    SelectedBaseMap: state.selectedBaseMap,
+  // // Zustand initialization
+  // const { Viewport } = useMapStore((state) => ({
+  //   SelectedBaseMap: state.selectedBaseMap,
 
-    GeoserverLayers: state.geoserverLayers,
-    SetGeoserverLayer: state.setGeoserverLayer,
+  //   GeoserverLayers: state.geoserverLayers,
+  //   SetGeoserverLayer: state.setGeoserverLayer,
 
-    Viewport: state.viewport,
-  }));
+  //   Viewport: state.viewport,
+  // }));
 
   // fetch layers under workspace->gismapping3
   // const queryClient = useQueryClient();
@@ -81,25 +82,6 @@ const MapComponent: FunctionComponent = () => {
   //   visible: false,
   //   preload: Infinity,
   //   className: "osmStandard",
-  // });
-
-  // const osmV2 = new TileLayer({
-  //   source: new OSM({
-  //     url: `https://api.maptiler.com/maps/streets-v2/256/{z}/{x}/{y}.png?key=${process.env.NEXT_PUBLIC_MAPTILER_KEY}`,
-  //   }),
-  //   visible: false,
-  //   preload: Infinity,
-  //   className: "osmV2",
-  // });
-
-  // const bingMaps = new TileLayer({
-  //   source: new BingMaps({
-  //     key: `${process.env.NEXT_PUBLIC_BING_KEY}`,
-  //     imagerySet: `AerialWithLabelsOnDemand`,
-  //   }),
-  //   visible: false,
-  //   preload: Infinity,
-  //   className: "bingMaps",
   // });
 
   // const olMap = new Map({
@@ -236,33 +218,39 @@ const MapComponent: FunctionComponent = () => {
   // }, [mapRef]);
   // SelectedBaseMap, GeoserverLayers
 
-  useEffect(() => {
-    const olMap = new Map({
-      target: mapRef.current!,
-      layers: [
-        new TileLayer({
-          source: new OSM(),
-        }),
-      ],
-      keyboardEventTarget: document,
-      controls: defaultControls().extend([new ZoomSlider()]),
-      view: new View({
-        center: Viewport.center,
-        zoom: Viewport.zoom,
-        maxZoom: Viewport.maxZoom,
-        minZoom: Viewport.minZoom,
-      }),
-    });
+  // useEffect(() => {
+  //   const olMap = new Map({
+  //     target: mapRef.current!,
+  //     layers: [
+  //       new TileLayer({
+  //         source: new OSM(),
+  //       }),
+  //     ],
+  //     keyboardEventTarget: document,
+  //     controls: defaultControls().extend([new ZoomSlider()]),
+  //     view: new View({
+  //       center: Viewport.center,
+  //       zoom: Viewport.zoom,
+  //       maxZoom: Viewport.maxZoom,
+  //       minZoom: Viewport.minZoom,
+  //     }),
+  //   });
 
-    // set the map state
-    setMap(map);
+  //   // set the map state
+  //   setMap(map);
 
-    // on component unmount remove the map references to avoid unexpected behavior
-    return () => {
-      // remove the map when the component is unmounted
-      olMap.setTarget(undefined);
-    };
-  }, [mapRef]);
+  //   // on component unmount remove the map references to avoid unexpected behavior
+  //   return () => {
+  //     // remove the map when the component is unmounted
+  //     olMap.setTarget(undefined);
+  //   };
+  // }, [mapRef]);
+
+  const map = useMap();
+
+  if (!map) {
+    return <>Empty Map</>;
+  }
 
   return (
     <>
@@ -270,7 +258,7 @@ const MapComponent: FunctionComponent = () => {
 
       <BaseLayerPicker />
 
-      <div ref={mapRef} id="map" />
+      <div tabIndex={-1} id="mainMap" className="h-full w-full" />
     </>
   );
 };

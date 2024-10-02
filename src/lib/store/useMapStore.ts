@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { TileLayer, ViewPort } from "@mapstudio/app/utils/types";
+import { TileLayerType, ViewPort } from "@mapstudio/app/utils/types";
 import { create } from "zustand";
 import { devtools } from "zustand/middleware";
 import { Map, View } from "ol";
+import { BaseLayerOptions } from "@mapstudio/app/utils/enums";
 
 export type MapState = {
   // Map View configuration
@@ -13,11 +14,15 @@ export type MapState = {
   mapRef: Map | null;
   setMapRef: (map: Map | null) => void;
 
+  // Map style
+  mapStyle: BaseLayerOptions;
+  setMapStyle: (style: BaseLayerOptions) => void;
+
   selectedBaseMap: string;
   setSelectedBaseMap: (selectedBaseMap: string) => void;
 
-  geoserverLayers: Array<TileLayer>;
-  setGeoserverLayer: (geoserverLayer: TileLayer) => void;
+  geoserverLayers: Array<TileLayerType>;
+  setGeoserverLayer: (geoserverLayer: TileLayerType) => void;
 
   setLayerVisibility: (index: number, visibility: boolean) => void;
 
@@ -42,11 +47,15 @@ export const useMapStore = create<MapState>()(
     mapRef: null,
     setMapRef: (map) => set({ mapRef: map }),
 
+    // Map style (default is Bing Aerial)
+    mapStyle: BaseLayerOptions.OSM,
+    setMapStyle: (style) => set({ mapStyle: style }),
+
     selectedBaseMap: "",
     setSelectedBaseMap: (selectedBaseMap) => set({ selectedBaseMap }),
 
     geoserverLayers: [],
-    setGeoserverLayer: (geoserverLayer: TileLayer) =>
+    setGeoserverLayer: (geoserverLayer: TileLayerType) =>
       set((state) => ({ geoserverLayers: [...state.geoserverLayers, geoserverLayer] })),
 
     setLayerVisibility: (index: number, visibility: boolean) => set((state) => ({})),
