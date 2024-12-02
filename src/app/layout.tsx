@@ -23,7 +23,7 @@ export default function RootLayout({ children }: Readonly<PropsWithChildren>) {
         <GrowthBookClientProvider>
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
+            defaultTheme="light"
             enableSystem
             disableTransitionOnChange
           >

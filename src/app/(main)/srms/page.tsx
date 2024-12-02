@@ -1,5 +1,11 @@
 import Link from "next/link";
-import { ModuleHeader } from "./(main)/components/ModuleHeader";
+import { ModuleHeader } from "../../(main)/components/ModuleHeader";
+import nsa_logo from "../../../../public/nsa-logo.png";
+import leakage_logo from "../../../../public/leakage-logo.png";
+import water_meter_logo from "../../../../public/water-meter-logo.png";
+import water_test_logo from "../../../../public/water-test-logo.png";
+import others from "../../../../public/others.png";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -42,20 +48,22 @@ export default function Home() {
             {/* Modules 1 */}
             <div className="flex flex-row gap-14">
               <Link
-                className="flex flex-col items-center"
+                className="flex flex-col items-center justify-center gap-1"
                 style={{
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
                   position: "relative",
-                  paddingTop: "70px",
-                  paddingLeft: "20px",
-                  paddingRight: "20px",
-                  paddingBottom: "15px",
                   boxShadow: `0px 4px 4px 0px #00000040`,
                 }}
-                href={"/srms"}
+                href={"/srms/nsa-dashboard/home"}
               >
+                <div
+                  className="flex flex-col items-center justify-center rounded-full p-2 w-16 h-16"
+                  style={{ backgroundColor: "#0162B31A" }}
+                >
+                  <Image src={nsa_logo} alt={""} width={80} height={80} />
+                </div>
                 <div
                   style={{
                     backgroundImage: "url(/module-bg-image.png)",
@@ -84,24 +92,26 @@ export default function Home() {
                     color: "#144DB1",
                   }}
                 >
-                  Service Request Management System
+                  New Service Application
                 </p>
               </Link>
               <Link
-                className="flex flex-col items-center"
+                className="flex flex-col items-center justify-center gap-1"
                 style={{
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
                   position: "relative",
-                  paddingTop: "70px",
-                  paddingLeft: "20px",
-                  paddingRight: "20px",
-                  paddingBottom: "15px",
                   boxShadow: `0px 4px 4px 0px #00000040`,
                 }}
                 href={""}
               >
+                <div
+                  className="flex flex-col items-center justify-center rounded-full p-2 w-16 h-16"
+                  style={{ backgroundColor: "#0162B31A" }}
+                >
+                  <Image src={leakage_logo} alt={""} width={80} height={80} />
+                </div>
                 <div
                   style={{
                     backgroundImage: "url(/module-bg-image.png)",
@@ -130,24 +140,26 @@ export default function Home() {
                     color: "#144DB1",
                   }}
                 >
-                  Pressure Management
+                  Leakage
                 </p>
               </Link>
               <Link
-                className="flex flex-col items-center"
+                className="flex flex-col items-center justify-center gap-1"
                 style={{
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
                   position: "relative",
-                  paddingTop: "70px",
-                  paddingLeft: "20px",
-                  paddingRight: "20px",
-                  paddingBottom: "15px",
                   boxShadow: `0px 4px 4px 0px #00000040`,
                 }}
                 href={""}
               >
+                <div
+                  className="flex flex-col items-center justify-center rounded-full p-2 w-16 h-16"
+                  style={{ backgroundColor: "#0162B31A" }}
+                >
+                  <Image src={water_meter_logo} alt={""} width={80} height={80} />
+                </div>
                 <div
                   style={{
                     backgroundImage: "url(/module-bg-image.png)",
@@ -176,24 +188,26 @@ export default function Home() {
                     color: "#144DB1",
                   }}
                 >
-                  Valve Management
+                  Water Meter
                 </p>
               </Link>
               <Link
-                className="flex flex-col items-center"
+                className="flex flex-col items-center justify-center gap-1"
                 style={{
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
                   position: "relative",
-                  paddingTop: "70px",
-                  paddingLeft: "20px",
-                  paddingRight: "20px",
-                  paddingBottom: "15px",
                   boxShadow: `0px 4px 4px 0px #00000040`,
                 }}
                 href={""}
               >
+                <div
+                  className="flex flex-col items-center justify-center rounded-full p-2 w-16 h-16"
+                  style={{ backgroundColor: "#0162B31A" }}
+                >
+                  <Image src={water_test_logo} alt={""} width={80} height={80} />
+                </div>
                 <div
                   style={{
                     backgroundImage: "url(/module-bg-image.png)",
@@ -222,24 +236,26 @@ export default function Home() {
                     color: "#144DB1",
                   }}
                 >
-                  District Metering Area Management
+                  Water Test
                 </p>
               </Link>
               <Link
-                className="flex flex-col items-center"
+                className="flex flex-col items-center justify-center gap-1"
                 style={{
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
                   position: "relative",
-                  paddingTop: "70px",
-                  paddingLeft: "20px",
-                  paddingRight: "20px",
-                  paddingBottom: "15px",
                   boxShadow: `0px 4px 4px 0px #00000040`,
                 }}
                 href={""}
               >
+                <div
+                  className="flex flex-col items-center justify-center rounded-full p-2 w-16 h-16"
+                  style={{ backgroundColor: "#0162B31A" }}
+                >
+                  <Image src={others} alt={""} width={80} height={80} />
+                </div>
                 <div
                   style={{
                     backgroundImage: "url(/module-bg-image.png)",
@@ -268,7 +284,7 @@ export default function Home() {
                     color: "#144DB1",
                   }}
                 >
-                  Leak Detection Monitoring
+                  Others
                 </p>
               </Link>
             </div>

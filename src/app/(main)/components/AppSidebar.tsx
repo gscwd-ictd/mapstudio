@@ -1,4 +1,4 @@
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react";
+"use client";
 
 import {
   Sidebar,
@@ -6,57 +6,179 @@ import {
   SidebarGroup,
   SidebarGroupContent,
   SidebarGroupLabel,
+  SidebarHeader,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarMenuSub,
+  SidebarMenuSubButton,
+  SidebarMenuSubItem,
 } from "@mapstudio/lib/components/ui/Sidebar";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import React from "react";
 
-// Menu items.
-const items = [
-  {
-    title: "Home",
-    url: "#",
-    icon: Home,
-  },
-  {
-    title: "Inbox",
-    url: "#",
-    icon: Inbox,
-  },
-  {
-    title: "Calendar",
-    url: "#",
-    icon: Calendar,
-  },
-  {
-    title: "Search",
-    url: "#",
-    icon: Search,
-  },
-  {
-    title: "Settings",
-    url: "#",
-    icon: Settings,
-  },
-];
+import Image from "next/image";
+import omms_logo from "../../../../public/omms-logo.png";
+import {
+  LayoutDashboard,
+  FileUser,
+  UsersRound,
+  ChevronRight,
+  Clock,
+  List,
+  ArrowLeftRight,
+  CircleCheck,
+} from "lucide-react";
 
-export function AppSidebar() {
+import { useSidebar } from "@mapstudio/lib/components/ui/Sidebar";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@mapstudio/lib/components/ui";
+
+const data = {
+  navMain: [
+    {
+      title: "Dashboard",
+      url: "/srms/nsa-dashboard/home",
+      icon: LayoutDashboard,
+      items: [],
+    },
+    {
+      title: "New Service Application",
+      url: "/srms/nsa-dashboard/new-service-application",
+      icon: FileUser,
+      items: [
+        {
+          title: "Waiting",
+          url: "/srms/nsa-dashboard/new-service-application/waiting",
+          icon: Clock,
+        },
+        {
+          title: "Pending",
+          url: "/srms/nsa-dashboard/new-service-application/pending",
+          icon: List,
+        },
+        {
+          title: "Returned",
+          url: "/srms/nsa-dashboard/new-service-application/returned",
+          icon: ArrowLeftRight,
+        },
+        {
+          title: "Accomplished",
+          url: "/srms/nsa-dashboard/new-service-application/accomplished",
+          icon: CircleCheck,
+        },
+      ],
+    },
+    {
+      title: "Personnel",
+      url: "/srms/nsa-dashboard/personnel",
+      icon: UsersRound,
+      items: [],
+    },
+    {
+      title: "Orientation",
+      url: "/srms/nsa-dashboard/orientation",
+      icon: UsersRound,
+      items: [],
+    },
+  ],
+};
+
+export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
+  const { state } = useSidebar();
+  const pathname = usePathname();
+  const [activeItem, setActiveItem] = React.useState(data.navMain[0]);
+
+  React.useEffect(() => {
+    const currentItem = data.navMain.find(
+      (item) => item.url === pathname || item.items.some((subItem) => subItem.url === pathname)
+    );
+    if (currentItem) {
+      setActiveItem(currentItem);
+    }
+  }, [pathname]);
+
   return (
-    <Sidebar>
+    <Sidebar collapsible="icon">
+      <SidebarHeader
+        className=" p-4 h-16 items-center justify-center"
+        style={{ backgroundColor: "#0162B3" }}
+      >
+        <div className="flex flex-row gap-2 items-center justify-center">
+          <Image src={omms_logo} width={40} height={40} alt={"OMMS"} />
+          {state !== "collapsed" && (
+            <p className="text-white text-lg font-extrabold tracking-widest">OMMS</p>
+          )}
+        </div>
+      </SidebarHeader>
       <SidebarContent>
         <SidebarGroup>
-          <SidebarGroupLabel>Application</SidebarGroupLabel>
           <SidebarGroupContent>
-            <SidebarMenu>
-              {items.map((item) => (
+            <SidebarGroupLabel className="mb-3 text-sm">Menu</SidebarGroupLabel>
+            <SidebarMenu className="gap-2">
+              {data.navMain.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
-                    <Link href={item.url}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </Link>
-                  </SidebarMenuButton>
+                  {item.items.length > 0 ? (
+                    <Collapsible
+                      key={item.title}
+                      title={item.title}
+                      defaultOpen
+                      className="group/collapsible"
+                    >
+                      <CollapsibleTrigger asChild>
+                        <SidebarMenuButton
+                          asChild
+                          tooltip={{
+                            children: item.title,
+                            hidden: false,
+                          }}
+                          isActive={
+                            activeItem.url === item.url ||
+                            item.items.some((subItem) => subItem.url === pathname)
+                          }
+                          className="px-2.5 md:px-2"
+                        >
+                          <div className="flex items-center">
+                            <item.icon />
+                            <span>{item.title}</span>
+                            <ChevronRight className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-90" />
+                          </div>
+                        </SidebarMenuButton>
+                      </CollapsibleTrigger>
+                      <CollapsibleContent>
+                        <SidebarMenuSub>
+                          {item.items?.map((subItem) => (
+                            <SidebarMenuSubItem key={subItem.title}>
+                              <SidebarMenuSubButton asChild isActive={pathname === subItem.url}>
+                                <Link href={subItem.url}>
+                                  {subItem.icon && <subItem.icon className="mr-2 size-4" />}
+                                  <span>{subItem.title}</span>
+                                </Link>
+                              </SidebarMenuSubButton>
+                            </SidebarMenuSubItem>
+                          ))}
+                        </SidebarMenuSub>
+                      </CollapsibleContent>
+                    </Collapsible>
+                  ) : (
+                    <SidebarMenuButton
+                      asChild
+                      tooltip={{
+                        children: item.title,
+                        hidden: false,
+                      }}
+                      isActive={
+                        activeItem.url === item.url ||
+                        item.items.some((subItem) => subItem.url === pathname)
+                      }
+                      className="px-2.5 md:px-2"
+                    >
+                      <Link href={item.url}>
+                        <item.icon />
+                        <span>{item.title}</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  )}
                 </SidebarMenuItem>
               ))}
             </SidebarMenu>
