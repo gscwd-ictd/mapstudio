@@ -71,7 +71,7 @@ export default async function PendingPage() {
             <TableHeader>
               <TableRow style={{ backgroundColor: "#2078C3" }}>
                 <TableHead>
-                  <Checkbox className="text-white" />
+                  <Checkbox className="border-white" />
                 </TableHead>
                 <TableHead className="text-white">NO.</TableHead>
                 <TableHead className="text-white">Application Number</TableHead>
@@ -114,13 +114,6 @@ export default async function PendingPage() {
                       </button>
                       <button>
                         <Send
-                          size={24}
-                          className="rounded-full p-1 text-white font-bold"
-                          style={{ backgroundColor: "039be5" }}
-                        />
-                      </button>
-                      <button>
-                        <Eye
                           size={24}
                           className="rounded-full p-1 text-white font-bold"
                           style={{ backgroundColor: "039be5" }}

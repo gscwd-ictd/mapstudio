@@ -2,11 +2,17 @@
 
 import React, { useEffect, useState } from "react";
 import Image from "next/image";
-import { ChevronDown, FilePenLine, Save, SendHorizontal } from "lucide-react";
+import { ChevronDown, FilePenLine, Save, SendHorizontal, X } from "lucide-react";
 import images from "../../../../public/images";
 import ConfirmDispatchModal from "./ConfirmDispatchModal";
 
-export function ApplicantForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+export function ForReturnApplicantForm({
+  isOpen,
+  onClose,
+}: {
+  isOpen: boolean;
+  onClose: () => void;
+}) {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -39,8 +45,10 @@ export function ApplicantForm({ isOpen, onClose }: { isOpen: boolean; onClose: (
         animate ? "opacity-100" : "opacity-0"
       }`}
     >
+      <ConfirmDispatchModal isOpen={isModalOpen} onClose={handleCloseModal} />
+
       <div
-        className={`m-4 bg-white rounded-lg shadow-lg w-[1100px] transform transition-transform duration-300 ${
+        className={`bg-white rounded-lg shadow-lg w-[1100px] h-[1000px] transform transition-transform duration-300 overflow-y-scroll no-scrollbar ${
           animate ? "scale-100" : "scale-95"
         }`}
       >
@@ -50,9 +58,8 @@ export function ApplicantForm({ isOpen, onClose }: { isOpen: boolean; onClose: (
             boxShadow: "inset 0px 6px 5px 2px rgba(0, 0, 0, 0.25)",
           }}
         > */}
-        <ConfirmDispatchModal isOpen={isModalOpen} onClose={handleCloseModal} />
 
-        <div className="flex flex-row justify-between items-center px-10 py-7 mb-12">
+        <div className="flex flex-row justify-between items-start px-10 py-7 mb-12">
           {/* Applicant Header */}
           <div className="bg-gray-200 p-3 rounded-2xl flex flex-row gap-10 items-center text-gray-800 ">
             <Image src={images.sample_avatar} alt={"Image"} width={100} />
@@ -63,7 +70,7 @@ export function ApplicantForm({ isOpen, onClose }: { isOpen: boolean; onClose: (
             </div>
           </div>
           {/* Edit/Save Details */}
-          <div className="flex flex-row gap-5 tracking-widest">
+          {/* <div className="flex flex-row gap-5 tracking-widest">
             <button className="flex flex-row gap-1 p-1 border-2 border-gray-400 rounded-2xl w-24 items-center justify-center">
               <FilePenLine />
               <p>Edit</p>
@@ -71,6 +78,11 @@ export function ApplicantForm({ isOpen, onClose }: { isOpen: boolean; onClose: (
             <button className="flex flex-row gap-1 p-1 border-2 border-gray-400 rounded-2xl w-24 items-center justify-center">
               <Save />
               <p>Save</p>
+            </button>
+          </div> */}
+          <div>
+            <button onClick={onClose}>
+              <X />
             </button>
           </div>
         </div>

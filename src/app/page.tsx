@@ -12,7 +12,7 @@ export default function Home() {
         >
           <div
             style={{
-              backgroundImage: "url(/modules-bg-image.jpg)",
+              backgroundImage: "url(/modules-bg-image.png)",
               backgroundSize: "cover",
               height: "100%",
               width: "100%",
@@ -44,6 +44,7 @@ export default function Home() {
               <Link
                 className="flex flex-col items-center"
                 style={{
+                  backgroundColor: "#FFFFFF33",
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
@@ -58,7 +59,7 @@ export default function Home() {
               >
                 <div
                   style={{
-                    backgroundImage: "url(/module-bg-image.png)",
+                    // backgroundImage: "url(/module-bg-image.png)",
                     backgroundSize: "cover",
                     opacity: 0.5,
                     position: "absolute",
@@ -90,6 +91,7 @@ export default function Home() {
               <Link
                 className="flex flex-col items-center"
                 style={{
+                  backgroundColor: "#FFFFFF33",
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
@@ -104,7 +106,7 @@ export default function Home() {
               >
                 <div
                   style={{
-                    backgroundImage: "url(/module-bg-image.png)",
+                    // backgroundImage: "url(/module-bg-image.png)",
                     backgroundSize: "cover",
                     opacity: 0.5,
                     position: "absolute",
@@ -136,6 +138,7 @@ export default function Home() {
               <Link
                 className="flex flex-col items-center"
                 style={{
+                  backgroundColor: "#FFFFFF33",
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
@@ -150,7 +153,7 @@ export default function Home() {
               >
                 <div
                   style={{
-                    backgroundImage: "url(/module-bg-image.png)",
+                    // backgroundImage: "url(/module-bg-image.png)",
                     backgroundSize: "cover",
                     opacity: 0.5,
                     position: "absolute",
@@ -182,6 +185,7 @@ export default function Home() {
               <Link
                 className="flex flex-col items-center"
                 style={{
+                  backgroundColor: "#FFFFFF33",
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
@@ -196,7 +200,7 @@ export default function Home() {
               >
                 <div
                   style={{
-                    backgroundImage: "url(/module-bg-image.png)",
+                    // backgroundImage: "url(/module-bg-image.png)",
                     backgroundSize: "cover",
                     opacity: 0.5,
                     position: "absolute",
@@ -228,6 +232,7 @@ export default function Home() {
               <Link
                 className="flex flex-col items-center"
                 style={{
+                  backgroundColor: "#FFFFFF33",
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
@@ -242,7 +247,7 @@ export default function Home() {
               >
                 <div
                   style={{
-                    backgroundImage: "url(/module-bg-image.png)",
+                    // backgroundImage: "url(/module-bg-image.png)",
                     backgroundSize: "cover",
                     opacity: 0.5,
                     position: "absolute",

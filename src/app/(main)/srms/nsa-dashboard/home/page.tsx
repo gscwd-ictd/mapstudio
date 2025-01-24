@@ -1,6 +1,5 @@
 "use client";
 
-import { Calendar } from "@mapstudio/lib/components/ui";
 import {
   ChartConfig,
   ChartContainer,
@@ -17,9 +16,12 @@ import TileLayer from "ol/layer/Tile";
 import { fromLonLat } from "ol/proj";
 import XYZ from "ol/source/XYZ";
 import images from "../../../../../../public/images";
+import { UsersRound } from "lucide-react";
+import { Badge, Button } from "@mapstudio/lib/components/ui";
+import MonthlyNSAStatsType from "@mapstudio/app/utils/mock/MonthlyNSAStats";
 
 const data = [
-  { name: "A", num: 1 },
+  { name: "a", num: 1 },
   { name: "B", num: 2 },
   { name: "C", num: 2 },
   { name: "D", num: 3 },
@@ -64,6 +66,8 @@ const chartConfig = {
   },
 } satisfies ChartConfig;
 
+console.log(MonthlyNSAStatsType);
+
 export default function Dashboard() {
   useEffect(() => {
     const map = new Map({
@@ -91,7 +95,7 @@ export default function Dashboard() {
       <h1 className="text-xl font-bold">Dashboard</h1>
 
       {/* CHARTS */}
-      <div className="flex flex-row gap-8 m-4 justify-between" style={{ width: "1300px" }}>
+      <div className="flex flex-row gap-8 m-4 justify-between">
         {/* TOTAL SERVICE CONNECTIONS */}
         <div
           className="flex flex-col justify-between shadow-lg rounded-lg"
@@ -102,13 +106,11 @@ export default function Dashboard() {
               className="flex flex-col items-center justify-center rounded-full p-3"
               style={{ backgroundColor: "#3C73DA", height: "60px", width: "60px" }}
             >
-              <Image src={images.total_service_connections} alt={""} width={50} height={50} />
+              <Image src={images.new_service_applications} alt={""} width={50} height={50} />
             </div>
-            <div className="flex flex-col gap-2 w-[40%]">
-              <p className="text-3xl text-white font-bold">70,400</p>
-              <p className="text-xs text-white font-medium break-words">
-                Total Service Connections
-              </p>
+            <div className="flex flex-col gap-2 w-[50%]">
+              <p className="text-3xl text-white font-bold">124</p>
+              <p className="text-xs text-white font-medium break-words">New Applications</p>
             </div>
           </div>
           <AreaChart width={300} height={40} data={data}>
@@ -126,11 +128,16 @@ export default function Dashboard() {
               className="flex flex-col items-center justify-center rounded-full p-3"
               style={{ backgroundColor: "#05A282", height: "60px", width: "60px" }}
             >
-              <Image src={images.new_service_applications} alt={""} width={50} height={50} />
+              <Image
+                src={images.approved_new_service_applications}
+                alt={""}
+                width={50}
+                height={50}
+              />
             </div>
-            <div className="flex flex-col gap-2 w-[40%]">
-              <p className="text-3xl text-white font-bold">86</p>
-              <p className="text-xs text-white font-medium ">New Service Applications</p>
+            <div className="flex flex-col gap-2 w-[50%]">
+              <p className="text-3xl text-white font-bold">89</p>
+              <p className="text-xs text-white font-medium ">Approved</p>
             </div>
           </div>
           <AreaChart width={300} height={40} data={data}>
@@ -138,21 +145,26 @@ export default function Dashboard() {
           </AreaChart>
         </div>
 
-        {/* APPLICATIONS WITH BILL OF MATERIALS */}
+        {/* SUSPENDED AREAS FOR NSA */}
         <div
           className="flex flex-col justify-between shadow-lg rounded-lg"
-          style={{ width: "300px", height: "150px", backgroundColor: "#FFB800B2" }}
+          style={{ width: "300px", height: "150px", backgroundColor: "#FFB800E5" }}
         >
           <div className="flex flex-row gap-4 p-2 items-center justify-center mt-4 break-words">
             <div
               className="flex flex-col items-center justify-center rounded-full p-3"
               style={{ backgroundColor: "#DEB23F", height: "60px", width: "60px" }}
             >
-              <Image src={images.applications_with_bill} alt={""} width={50} height={50} />
+              <Image
+                src={images.pending_new_service_applications}
+                alt={""}
+                width={50}
+                height={50}
+              />
             </div>
-            <div className="flex flex-col gap-2 w-[40%]">
-              <p className="text-3xl text-white font-bold">50</p>
-              <p className="text-xs text-white font-medium">Applications with Bill of Materials</p>
+            <div className="flex flex-col gap-2 w-[50%]">
+              <p className="text-3xl text-white font-bold">35</p>
+              <p className="text-xs text-white font-medium">Pending</p>
             </div>
           </div>
           <AreaChart width={300} height={40} data={data}>
@@ -163,28 +175,33 @@ export default function Dashboard() {
         {/* TOTAL INSTALLATION */}
         <div
           className="flex flex-col justify-between shadow-lg rounded-lg"
-          style={{ width: "300px", height: "150px", backgroundColor: "#9853F2" }}
+          style={{ width: "300px", height: "150px", backgroundColor: "#FD2630A3" }}
         >
           <div className="flex flex-row gap-4 p-2 items-center justify-center mt-4 break-words">
             <div
               className="flex flex-col items-center justify-center rounded-full p-3"
-              style={{ backgroundColor: "#7643B880", height: "60px", width: "60px" }}
+              style={{ backgroundColor: "#4E0D101A", height: "60px", width: "60px" }}
             >
-              <Image src={images.total_installation} alt={""} width={50} height={50} />
+              <Image
+                src={images.disapproved_new_service_applications}
+                alt={""}
+                width={50}
+                height={50}
+              />
             </div>
-            <div className="flex flex-col gap-2 w-[40%]">
+            <div className="flex flex-col gap-2 w-[50%]">
               <p className="text-3xl text-white font-bold">20</p>
               <p className="text-xs text-white font-medium ">Total Installation</p>
             </div>
           </div>
           <AreaChart width={300} height={40} data={data}>
-            <Area type="monotone" dataKey="num" stroke="#FFFFFF" fill="#B88BF2A3" />
+            <Area type="monotone" dataKey="num" stroke="#FFFFFF" fill="#E7A8AB66" />
           </AreaChart>
         </div>
       </div>
 
       {/* CHARTS WITH CALENDAR */}
-      <div className="flex flex-row gap-8 m-4 justify-between" style={{ width: "1300px" }}>
+      <div className="flex flex-row gap-8 m-4 justify-between">
         <div className="flex flex-col gap-1">
           <p className="text-sm" style={{ color: "#1E1E1E" }}>
             Survey
@@ -236,43 +253,72 @@ export default function Dashboard() {
             Orientation Schedule
           </p>
           <div
-            className="bg-white shadow-lg rounded-lg"
-            style={{ width: "600px", height: "300px", overflow: "hidden" }}
+            className="bg-white shadow-lg rounded-lg p-4 flex flex-col gap-3"
+            style={{ width: "600px", height: "300px", overflowY: "scroll" }}
           >
-            <Calendar
-              mode="single"
-              className="rounded-md border w-full h-full"
-              classNames={{
-                months:
-                  "flex flex-col sm:flex-row space-y-4 sm:space-x-4 sm:space-y-0 text-black/70",
-                month: "space-y-2 w-full",
+            <button className="flex self-end p-2 hover:underline" style={{ color: "#2078C3" }}>
+              View All
+            </button>
+            <div
+              className="flex flex-row items-center justify-between p-3 rounded-sm"
+              style={{ border: "0.5px solid #98989880" }}
+            >
+              <div className="flex flex-row gap-5 items-center" style={{ color: "#1E1E1ECC" }}>
+                <UsersRound size={32} color="#4582f9" fill="#4582f9" />
+                <div className="flex flex-col">
+                  <h1 className="font-extrabold">Batch 1 Orientation</h1>
+                  <p className="text-xs">January 3, 2025 - 9:00-10:00 AM</p>
+                </div>
+              </div>
+              <Badge style={{ backgroundColor: "#9FFACB", color: "#2DAD83" }}>available</Badge>
+            </div>
 
-                caption: "flex justify-start relative items-center",
-                head_cell:
-                  "text-muted-foreground rounded-md w-full font-normal text-[0.7rem] flex-1 text-center",
-                caption_label: "font-medium tracking-widest text-lg",
-                nav: "space-x-1 flex items-center",
-                nav_button: "h-7 w-7 bg-transparent p-0 opacity-50 hover:opacity-100",
-                nav_button_previous: "hidden",
-                nav_button_next: "hidden",
-                table: "w-full border-collapse space-y-1 bg-gray-200/50 ",
-                head_row: "flex w-full text-gray-800 border-2 border-black/50 uppercase",
-                row: "flex w-full mt-1",
-                day: "h-7 w-full p-0 font-normal aria-selected:opacity-100",
-                cell: "text-center text-sm p-0 relative [&:has([aria-selected])]:bg-accent first:[&:has([aria-selected])]:rounded-l-md last:[&:has([aria-selected])]:rounded-r-md focus-within:relative focus-within:z-20 w-full",
-                day_selected:
-                  "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground focus:bg-primary focus:text-primary-foreground",
-                day_outside: "text-muted-foreground opacity-50",
-                day_disabled: "text-muted-foreground opacity-50",
-                day_range_middle: "aria-selected:bg-accent aria-selected:text-accent-foreground",
-                day_hidden: "invisible",
-              }}
-            />
+            <div
+              className="flex flex-row items-center justify-between p-3 rounded-sm"
+              style={{ border: "0.5px solid #98989880" }}
+            >
+              <div className="flex flex-row gap-5 items-center" style={{ color: "#1E1E1ECC" }}>
+                <UsersRound size={32} color="#4582f9" fill="#4582f9" />
+                <div className="flex flex-col">
+                  <h1 className="font-extrabold">Batch 1 Orientation</h1>
+                  <p className="text-xs">January 3, 2025 - 9:00-10:00 AM</p>
+                </div>
+              </div>
+              <Badge style={{ backgroundColor: "#9FFACB", color: "#2DAD83" }}>available</Badge>
+            </div>
+
+            <div
+              className="flex flex-row items-center justify-between p-3 rounded-sm"
+              style={{ border: "0.5px solid #98989880" }}
+            >
+              <div className="flex flex-row gap-5 items-center" style={{ color: "#1E1E1ECC" }}>
+                <UsersRound size={32} color="#4582f9" fill="#4582f9" />
+                <div className="flex flex-col">
+                  <h1 className="font-extrabold">Batch 1 Orientation</h1>
+                  <p className="text-xs">January 3, 2025 - 9:00-10:00 AM</p>
+                </div>
+              </div>
+              <Badge style={{ backgroundColor: "#9FFACB", color: "#2DAD83" }}>available</Badge>
+            </div>
+
+            <div
+              className="flex flex-row items-center justify-between p-3 rounded-sm"
+              style={{ border: "0.5px solid #98989880" }}
+            >
+              <div className="flex flex-row gap-5 items-center" style={{ color: "#1E1E1ECC" }}>
+                <UsersRound size={32} color="#4582f9" fill="#4582f9" />
+                <div className="flex flex-col">
+                  <h1 className="font-extrabold">Batch 1 Orientation</h1>
+                  <p className="text-xs">January 3, 2025 - 9:00-10:00 AM</p>
+                </div>
+              </div>
+              <Badge style={{ backgroundColor: "#9FFACB", color: "#2DAD83" }}>available</Badge>
+            </div>
           </div>
         </div>
       </div>
       {/* ANOTHER CONTENT */}
-      <div className="flex flex-col gap-8 m-4 justify-between" style={{ width: "1300px" }}>
+      <div className="flex flex-col gap-8 m-4 justify-between">
         <div className="flex flex-col gap-1">
           <p className="text-sm" style={{ color: "#1E1E1E" }}>
             Service Connections

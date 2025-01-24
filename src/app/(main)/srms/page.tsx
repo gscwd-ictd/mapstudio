@@ -18,11 +18,11 @@ export default function Home() {
         >
           <div
             style={{
-              backgroundImage: "url(/modules-bg-image.jpg)",
+              backgroundImage: "url(/modules-bg-image.png)",
               backgroundSize: "cover",
               height: "100%",
               width: "100%",
-              opacity: 0.5,
+              opacity: 0.7,
               position: "absolute",
               top: 0,
               left: 0,
@@ -50,6 +50,7 @@ export default function Home() {
               <Link
                 className="flex flex-col items-center justify-center gap-1"
                 style={{
+                  backgroundColor: "#FFFFFF33",
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
@@ -98,6 +99,7 @@ export default function Home() {
               <Link
                 className="flex flex-col items-center justify-center gap-1"
                 style={{
+                  backgroundColor: "#FFFFFF33",
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
@@ -146,6 +148,7 @@ export default function Home() {
               <Link
                 className="flex flex-col items-center justify-center gap-1"
                 style={{
+                  backgroundColor: "#FFFFFF33",
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
@@ -194,6 +197,7 @@ export default function Home() {
               <Link
                 className="flex flex-col items-center justify-center gap-1"
                 style={{
+                  backgroundColor: "#FFFFFF33",
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
@@ -242,6 +246,7 @@ export default function Home() {
               <Link
                 className="flex flex-col items-center justify-center gap-1"
                 style={{
+                  backgroundColor: "#FFFFFF33",
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",

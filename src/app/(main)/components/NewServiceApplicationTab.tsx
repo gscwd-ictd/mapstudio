@@ -33,8 +33,8 @@ export default function NewServiceApplicationTab({
 }) {
   return (
     <div>
-      <Tabs defaultValue={firstTabValue} className="w-full">
-        <div className="w-full flex flex-row justify-between place-items-end">
+      <Tabs defaultValue={firstTabValue} className="w-full h-full">
+        <div className="w-full flex flex-row justify-between place-items-end bg-white">
           <div>
             <TabsList>
               <TabsTrigger

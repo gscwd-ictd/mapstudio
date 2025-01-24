@@ -1,11 +1,15 @@
 import React from "react";
 import Image from "next/image";
 import images from "../../../../public/images";
+import { Badge } from "@mapstudio/lib/components/ui/Badge";
 
 export function ApplicantCard() {
   return (
     <>
-      <div className="bg-gray-200 p-3 rounded-lg flex flex-row gap-4">
+      <div className="bg-gray-200 p-3 rounded-lg flex flex-row gap-4 relative">
+        <Badge className="absolute top-0 right-0 m-2" style={{ backgroundColor: "#32CD32" }}>
+          New
+        </Badge>
         <div className="flex flex-col items-center gap-2">
           <Image src={images.sample_avatar} alt={"Image"} width={50} />
           <p className="text-xs" style={{ fontSize: "0.5rem" }}>

@@ -25,10 +25,14 @@ import {
   FileUser,
   UsersRound,
   ChevronRight,
-  Clock,
   List,
   ArrowLeftRight,
   CircleCheck,
+  SendHorizontal,
+  MapPinned,
+  ClipboardList,
+  FileText,
+  ChartColumnIncreasing,
 } from "lucide-react";
 
 import { useSidebar } from "@mapstudio/lib/components/ui/Sidebar";
@@ -48,9 +52,9 @@ const data = {
       icon: FileUser,
       items: [
         {
-          title: "Waiting",
-          url: "/srms/nsa-dashboard/new-service-application/waiting",
-          icon: Clock,
+          title: "For Dispatch",
+          url: "/srms/nsa-dashboard/new-service-application/for-dispatch",
+          icon: SendHorizontal,
         },
         {
           title: "Pending",
@@ -81,6 +85,36 @@ const data = {
       icon: UsersRound,
       items: [],
     },
+    {
+      title: "Maps",
+      url: "/srms/nsa-dashboard/maps",
+      icon: MapPinned,
+      items: [],
+    },
+    {
+      title: "Work Order",
+      url: "/srms/nsa-dashboard/work-order",
+      icon: ClipboardList,
+      items: [],
+    },
+    {
+      title: "Notice",
+      url: "/srms/nsa-dashboard/notice",
+      icon: FileText,
+      items: [],
+    },
+    {
+      title: "Reports",
+      url: "/srms/nsa-dashboard/reports",
+      icon: ChartColumnIncreasing,
+      items: [],
+    },
+    // {
+    //   title: "Examples",
+    //   url: "/srms/nsa-dashboard/examples",
+    //   icon: SquareTerminal,
+    //   items: [],
+    // },
   ],
 };
 

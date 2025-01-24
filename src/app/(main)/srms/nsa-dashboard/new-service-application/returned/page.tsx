@@ -1,5 +1,7 @@
+"use client";
+
 import { Eye, Send, SquarePen } from "lucide-react";
-import React from "react";
+import React, { useState } from "react";
 import NewServiceApplicationTab from "@mapstudio/app/(main)/components/NewServiceApplicationTab";
 import {
   Table,
@@ -21,8 +23,22 @@ import {
 } from "@mapstudio/lib/components/ui/BreadCrumb";
 import NewServiceApplicationOptions from "@mapstudio/app/(main)/components/NewServiceApplicationOptions";
 import { TabsContent } from "@radix-ui/react-tabs";
+import { ApplicantForm } from "@mapstudio/app/(main)/components/ApplicantForm";
+import BillOfMaterialsModal from "@mapstudio/app/(main)/components/BillOfMaterialsModal";
+import { ForReturnApplicantForm } from "@mapstudio/app/(main)/components/ForReturnApplicantForm";
+// import BillOfMaterialsModal from "@mapstudio/app/(main)/components/ConfirmDispatchModal";
 
-export default async function PendingPage() {
+export default function ReturnedPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
   const data = [
     {
       number: 1,
@@ -61,6 +77,7 @@ export default async function PendingPage() {
           </BreadcrumbList>
         </Breadcrumb>
       </div>
+
       <NewServiceApplicationTab
         optionsHeader={NewServiceApplicationOptions()}
         firstTabName="Survey"
@@ -68,12 +85,15 @@ export default async function PendingPage() {
         secondTabName="Installation"
         secondTabValue="installation"
       >
+        <ForReturnApplicantForm isOpen={isModalOpen} onClose={handleCloseModal} />
+        {/* <BillOfMaterialsModal isOpen={isModalOpen} onClose={handleCloseModal} /> */}
+
         <TabsContent value="survey">
           <Table className="mt-6">
             <TableHeader>
               <TableRow style={{ backgroundColor: "#2078C3" }}>
                 <TableHead>
-                  <Checkbox className="text-white" />
+                  <Checkbox className="border-white" />
                 </TableHead>
                 <TableHead className="text-white">NO.</TableHead>
                 <TableHead className="text-white">Application Number</TableHead>
@@ -110,20 +130,13 @@ export default async function PendingPage() {
                   <TableCell>
                     <div className="flex gap-2">
                       <button>
-                        <SquarePen
-                          size={24}
-                          className="rounded-full p-1 text-white font-bold"
-                          style={{ backgroundColor: "039be5" }}
-                        />
-                      </button>
-                      <button>
                         <Send
                           size={24}
                           className="rounded-full p-1 text-white font-bold"
                           style={{ backgroundColor: "039be5" }}
                         />
                       </button>
-                      <button>
+                      <button onClick={handleOpenModal}>
                         <Eye
                           size={24}
                           className="rounded-full p-1 text-white font-bold"

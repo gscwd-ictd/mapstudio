@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useState } from "react";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,10 +12,11 @@ import {
 import NewServiceApplicationTab from "@mapstudio/app/(main)/components/NewServiceApplicationTab";
 import { TabsContent } from "@mapstudio/lib/components/ui";
 import { ApplicantList } from "@mapstudio/app/(main)/components/ApplicantList";
-import { ApplicantForm } from "@mapstudio/app/(main)/components/ApplicantForm";
+import { ForDispatchApplicantForm } from "@mapstudio/app/(main)/components/ForDispatchApplicantForm";
 import SampleOptions from "@mapstudio/app/(main)/components/SampleOptions";
+import ConfirmDispatchModal from "@mapstudio/app/(main)/components/ConfirmDispatchModal";
 
-export default async function WaitingPage() {
+export default function ForDispatchPage() {
   return (
     <>
       <div className="mb-6">
@@ -24,7 +27,7 @@ export default async function WaitingPage() {
             </BreadcrumbItem>
             <BreadcrumbSeparator>/</BreadcrumbSeparator>
             <BreadcrumbItem>
-              <BreadcrumbPage className="italic">Waiting</BreadcrumbPage>
+              <BreadcrumbPage className="italic">For Dispatch</BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
@@ -41,7 +44,7 @@ export default async function WaitingPage() {
           <TabsContent value="survey">
             <div className="flex flex-row gap-3 justify-between w-[85vw] mt-6">
               <ApplicantList />
-              <ApplicantForm />
+              <ForDispatchApplicantForm />
             </div>
           </TabsContent>
           <TabsContent value="installation">

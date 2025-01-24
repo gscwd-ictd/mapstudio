@@ -25,7 +25,7 @@ import NewServiceApplicationOptions from "@mapstudio/app/(main)/components/NewSe
 import { TabsContent } from "@radix-ui/react-tabs";
 import BillOfMaterialsModal from "@mapstudio/app/(main)/components/BillOfMaterialsModal";
 
-export default function PendingPage() {
+export default function AccomplishedPage() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -87,7 +87,7 @@ export default function PendingPage() {
             <TableHeader>
               <TableRow style={{ backgroundColor: "#2078C3" }}>
                 <TableHead>
-                  <Checkbox className="text-white" />
+                  <Checkbox className="border-white" />
                 </TableHead>
                 <TableHead className="text-white">NO.</TableHead>
                 <TableHead className="text-white">Application Number</TableHead>
