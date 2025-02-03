@@ -9,7 +9,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
         <AppSidebar />
         <main
           className="text-black h-screen w-screen"
-          style={{ backgroundColor: "#FFFFFF" }}
+          style={{ backgroundColor: "white" }}
           suppressHydrationWarning
         >
           <AppHeader />

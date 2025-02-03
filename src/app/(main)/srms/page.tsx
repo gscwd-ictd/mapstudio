@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <>
       <ModuleHeader />
-      <div style={{ backgroundColor: "#5299FE33" }}>
+      <div>
         <div
           className="flex flex-col items-center"
           style={{ position: "relative", height: "100vh", width: "100vw" }}
@@ -50,12 +50,11 @@ export default function Home() {
               <Link
                 className="flex flex-col items-center justify-center gap-1"
                 style={{
-                  backgroundColor: "#FFFFFF33",
+                  backgroundColor: "white",
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
                   position: "relative",
-                  boxShadow: `0px 4px 4px 0px #00000040`,
                 }}
                 href={"/srms/nsa-dashboard/home"}
               >
@@ -69,7 +68,6 @@ export default function Home() {
                   style={{
                     backgroundImage: "url(/module-bg-image.png)",
                     backgroundSize: "cover",
-                    opacity: 0.5,
                     position: "absolute",
                     top: 0,
                     left: 0,
@@ -99,12 +97,11 @@ export default function Home() {
               <Link
                 className="flex flex-col items-center justify-center gap-1"
                 style={{
-                  backgroundColor: "#FFFFFF33",
+                  backgroundColor: "white",
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
                   position: "relative",
-                  boxShadow: `0px 4px 4px 0px #00000040`,
                 }}
                 href={""}
               >
@@ -148,12 +145,11 @@ export default function Home() {
               <Link
                 className="flex flex-col items-center justify-center gap-1"
                 style={{
-                  backgroundColor: "#FFFFFF33",
+                  backgroundColor: "white",
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
                   position: "relative",
-                  boxShadow: `0px 4px 4px 0px #00000040`,
                 }}
                 href={""}
               >
@@ -197,12 +193,11 @@ export default function Home() {
               <Link
                 className="flex flex-col items-center justify-center gap-1"
                 style={{
-                  backgroundColor: "#FFFFFF33",
+                  backgroundColor: "white",
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
                   position: "relative",
-                  boxShadow: `0px 4px 4px 0px #00000040`,
                 }}
                 href={""}
               >
@@ -246,12 +241,11 @@ export default function Home() {
               <Link
                 className="flex flex-col items-center justify-center gap-1"
                 style={{
-                  backgroundColor: "#FFFFFF33",
+                  backgroundColor: "white",
                   width: "216px",
                   height: "113px",
                   borderRadius: "20px",
                   position: "relative",
-                  boxShadow: `0px 4px 4px 0px #00000040`,
                 }}
                 href={""}
               >

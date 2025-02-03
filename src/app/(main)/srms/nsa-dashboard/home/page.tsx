@@ -69,26 +69,26 @@ const chartConfig = {
 console.log(MonthlyNSAStatsType);
 
 export default function Dashboard() {
-  useEffect(() => {
-    const map = new Map({
-      target: "sampleMap",
-      layers: [
-        new TileLayer({
-          source: new XYZ({
-            url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-          }),
-        }),
-      ],
-      view: new View({
-        center: fromLonLat([125.1716, 6.1128]),
-        zoom: 12,
-      }),
-    });
+  // useEffect(() => {
+  //   const map = new Map({
+  //     target: "sampleMap",
+  //     layers: [
+  //       new TileLayer({
+  //         source: new XYZ({
+  //           url: "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+  //         }),
+  //       }),
+  //     ],
+  //     view: new View({
+  //       center: fromLonLat([125.1716, 6.1128]),
+  //       zoom: 12,
+  //     }),
+  //   });
 
-    return () => {
-      map.setTarget(undefined);
-    };
-  }, []);
+  //   return () => {
+  //     map.setTarget(undefined);
+  //   };
+  // }, []);
 
   return (
     <>
@@ -324,7 +324,7 @@ export default function Dashboard() {
             Service Connections
           </p>
           <div className="bg-white w-full h-[350px] shadow-lg rounded-lg">
-            <div id="sampleMap" className="w-full h-full" style={{ borderRadius: "0.5rem" }} />
+            {/* <div id="sampleMap" className="w-full h-full" style={{ borderRadius: "0.5rem" }} /> */}
           </div>
         </div>
       </div>

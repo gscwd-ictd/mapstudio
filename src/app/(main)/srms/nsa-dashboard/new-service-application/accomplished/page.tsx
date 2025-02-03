@@ -24,8 +24,15 @@ import {
 import NewServiceApplicationOptions from "@mapstudio/app/(main)/components/NewServiceApplicationOptions";
 import { TabsContent } from "@radix-ui/react-tabs";
 import BillOfMaterialsModal from "@mapstudio/app/(main)/components/BillOfMaterialsModal";
+import DynamicTabs from "@mapstudio/app/(main)/components/DynamicTabs";
 
 export default function AccomplishedPage() {
+  const tabsData = [
+    { value: "tab1", label: "Tab 1", content: <p>This is Tab 1 content</p> },
+    { value: "tab2", label: "Tab 2", content: <p>This is Tab 2 content</p> },
+    { value: "tab3", label: "Tab 3", content: <p>This is Tab 3 content</p> },
+  ];
+
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -74,7 +81,7 @@ export default function AccomplishedPage() {
           </BreadcrumbList>
         </Breadcrumb>
       </div>
-      <NewServiceApplicationTab
+      {/* <NewServiceApplicationTab
         optionsHeader={NewServiceApplicationOptions()}
         firstTabName="Survey"
         firstTabValue="survey"
@@ -134,7 +141,8 @@ export default function AccomplishedPage() {
           </Table>
         </TabsContent>
         <TabsContent value="installation">12</TabsContent>
-      </NewServiceApplicationTab>
+      </NewServiceApplicationTab> */}
+      <DynamicTabs tabs={tabsData}></DynamicTabs>
     </>
   );
 }

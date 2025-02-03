@@ -33,6 +33,9 @@ import {
   ClipboardList,
   FileText,
   ChartColumnIncreasing,
+  Settings,
+  Map,
+  Settings2Icon,
 } from "lucide-react";
 
 import { useSidebar } from "@mapstudio/lib/components/ui/Sidebar";
@@ -108,6 +111,33 @@ const data = {
       url: "/srms/nsa-dashboard/reports",
       icon: ChartColumnIncreasing,
       items: [],
+    },
+    {
+      title: "Maintenance",
+      url: "/srms/nsa-dashboard/maintenance",
+      icon: Settings,
+      items: [
+        {
+          title: "Barangay",
+          url: "/srms/nsa-dashboard/maintenance/barangay",
+          icon: Map,
+        },
+        {
+          title: "Purok",
+          url: "/srms/nsa-dashboard/maintenance/purok",
+          icon: Map,
+        },
+        {
+          title: "Plumbing Fixtures Declaration",
+          url: "/srms/nsa-dashboard/maintenance/plumbing-fixtures",
+          icon: List,
+        },
+        {
+          title: "Settings",
+          url: "/srms/nsa-dashboard/maintenance/settings",
+          icon: Settings2Icon,
+        },
+      ],
     },
     // {
     //   title: "Examples",

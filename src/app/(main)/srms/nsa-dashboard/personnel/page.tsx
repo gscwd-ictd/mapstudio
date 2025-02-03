@@ -7,11 +7,12 @@ import TileLayer from "ol/layer/Tile";
 import { fromLonLat } from "ol/proj";
 import XYZ from "ol/source/XYZ";
 import { useEffect, useState } from "react";
-import { Search, UserRound, X } from "lucide-react";
+import { Group, Search, UserRound, X } from "lucide-react";
 import { SurveyorCard } from "@mapstudio/app/(main)/components/SurveyorCard";
 import SurveyorDetails from "@mapstudio/app/(main)/components/SurveyorDetails";
 import { Tabs } from "@radix-ui/react-tabs";
 import { TabsContent } from "@mapstudio/lib/components/ui";
+import { GroupDropdown } from "@mapstudio/app/(main)/components/GroupDropdown";
 
 export default function PersonnelPage() {
   useEffect(() => {
@@ -63,11 +64,38 @@ export default function PersonnelPage() {
     },
   ];
 
+  const groupMembers = [
+    {
+      groupName: "Group 1",
+      members: [
+        { id: 1, name: "1", avatar: "/avatars/person1.png" },
+        { id: 2, name: "2", avatar: "/avatars/person2.png" },
+        { id: 3, name: "3", avatar: "/avatars/person3.png" },
+        { id: 4, name: "4", avatar: "/avatars/person4.png" },
+        { id: 5, name: "5", avatar: "/avatars/person5.png" },
+        { id: 6, name: "6", avatar: "/avatars/person6.png" },
+        { id: 7, name: "7", avatar: "/avatars/person7.png" },
+      ],
+    },
+    {
+      groupName: "Group 2",
+      members: [
+        { id: 1, name: "1", avatar: "/avatars/person1.png" },
+        { id: 2, name: "2", avatar: "/avatars/person2.png" },
+        { id: 3, name: "3", avatar: "/avatars/person3.png" },
+        { id: 4, name: "4", avatar: "/avatars/person4.png" },
+        { id: 5, name: "5", avatar: "/avatars/person5.png" },
+        { id: 6, name: "6", avatar: "/avatars/person6.png" },
+        { id: 7, name: "7", avatar: "/avatars/person7.png" },
+      ],
+    },
+  ];
+
   return (
     <>
       <h1 className="text-xl font-bold mb-6">Personnel</h1>
 
-      <div className="flex flex-row " style={{ backgroundColor: "#EBEFF0" }}>
+      <div className="flex flex-row " style={{}}>
         <NewServiceApplicationTab
           firstTabName="Surveyor"
           firstTabValue="surveyor"
@@ -77,10 +105,10 @@ export default function PersonnelPage() {
           <SurveyorDetails isOpen={isModalOpen} onClose={handleCloseModal} />
 
           <TabsContent value="surveyor">
-            <div className="h-full">
+            <div style={{ backgroundColor: "#EBEFF0" }}>
               {/* */}
               <div className="flex flex-row gap-1">
-                <div className="w-[400px] p-10">
+                <div className="w-[400px] p-8 h-[100vh]">
                   <div className="flex flex-col gap-5">
                     {/* Search */}
                     <div className="relative flex items-center w-full" style={{}}>
@@ -148,7 +176,7 @@ export default function PersonnelPage() {
           <TabsContent value="installer">
             <div style={{ backgroundColor: "#EBEFF0" }}>
               <div className="flex flex-row gap-1">
-                <div className="w-[400px] p-10">
+                <div className="w-[400px] p-8 h-[100vh]">
                   <div className="flex flex-col gap-5">
                     {/* Search */}
                     <div className="relative flex items-center w-full" style={{}}>
@@ -167,7 +195,7 @@ export default function PersonnelPage() {
                     </div>
                     <div className="flex flex-row justify-between items-center">
                       <span className=" text-gray-800" style={{ fontSize: "14px" }}>
-                        Total: 2
+                        Total: 7
                       </span>
                       <div className="flex flex-row gap-3">
                         <button
@@ -188,24 +216,12 @@ export default function PersonnelPage() {
                     </div>
                     {/* Card */}
                     <div className="flex flex-col gap-6">
-                      {sampleArrayOfPersonnel.map((personnel, index) => (
-                        <button
+                      {groupMembers.map((group, index) => (
+                        <GroupDropdown
                           key={index}
-                          onClick={() => handleOpenModal(index)}
-                          className=""
-                          style={
-                            clickedCardIndex === index
-                              ? { outline: "2px solid #2078C3", borderRadius: "5px" }
-                              : {}
-                          }
-                        >
-                          <SurveyorCard
-                            name={personnel.name}
-                            department={personnel.department}
-                            address={personnel.address}
-                            status={personnel.status}
-                          />
-                        </button>
+                          groupMembers={group.members}
+                          groupName={group.groupName}
+                        />
                       ))}
                     </div>
                   </div>
