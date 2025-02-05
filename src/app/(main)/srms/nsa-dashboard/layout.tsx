@@ -13,7 +13,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           suppressHydrationWarning
         >
           <AppHeader />
-          <div className="m-4 text-gray-800">{children}</div>
+          {/* m-4  */}
+          <div className="text-gray-800">{children}</div>
         </main>
       </SidebarProvider>
     </>

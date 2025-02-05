@@ -19,6 +19,7 @@ import images from "../../../../../../public/images";
 import { UsersRound } from "lucide-react";
 import { Badge, Button } from "@mapstudio/lib/components/ui";
 import MonthlyNSAStatsType from "@mapstudio/app/utils/mock/MonthlyNSAStats";
+import PageContainer from "@mapstudio/app/(main)/components/PageContainer";
 
 const data = [
   { name: "a", num: 1 },
@@ -92,242 +93,237 @@ export default function Dashboard() {
 
   return (
     <>
-      <h1 className="text-xl font-bold">Dashboard</h1>
+      <PageContainer>
+        <h1 className="text-xl font-bold">Dashboard</h1>
 
-      {/* CHARTS */}
-      <div className="flex flex-row gap-8 m-4 justify-between">
-        {/* TOTAL SERVICE CONNECTIONS */}
-        <div
-          className="flex flex-col justify-between shadow-lg rounded-lg"
-          style={{ width: "300px", height: "150px", backgroundColor: "#4582F9" }}
-        >
-          <div className="flex flex-row gap-4 p-2 items-center justify-center mt-4">
-            <div
-              className="flex flex-col items-center justify-center rounded-full p-3"
-              style={{ backgroundColor: "#3C73DA", height: "60px", width: "60px" }}
-            >
-              <Image src={images.new_service_applications} alt={""} width={50} height={50} />
-            </div>
-            <div className="flex flex-col gap-2 w-[50%]">
-              <p className="text-3xl text-white font-bold">124</p>
-              <p className="text-xs text-white font-medium break-words">New Applications</p>
-            </div>
-          </div>
-          <AreaChart width={300} height={40} data={data}>
-            <Area type="monotone" dataKey="num" stroke="#FFFFFF" fill="#87AEFB" />
-          </AreaChart>
-        </div>
-
-        {/* NEW SERVICE APPLICATIONS */}
-        <div
-          className="flex flex-col justify-between shadow-lg rounded-lg"
-          style={{ width: "300px", height: "150px", backgroundColor: "#00BC8B" }}
-        >
-          <div className="flex flex-row gap-4 p-2 items-center justify-center mt-4 break-words">
-            <div
-              className="flex flex-col items-center justify-center rounded-full p-3"
-              style={{ backgroundColor: "#05A282", height: "60px", width: "60px" }}
-            >
-              <Image
-                src={images.approved_new_service_applications}
-                alt={""}
-                width={50}
-                height={50}
-              />
-            </div>
-            <div className="flex flex-col gap-2 w-[50%]">
-              <p className="text-3xl text-white font-bold">89</p>
-              <p className="text-xs text-white font-medium ">Approved</p>
-            </div>
-          </div>
-          <AreaChart width={300} height={40} data={data}>
-            <Area type="monotone" dataKey="num" stroke="#FFFFFF" fill="#56D2B2" />
-          </AreaChart>
-        </div>
-
-        {/* SUSPENDED AREAS FOR NSA */}
-        <div
-          className="flex flex-col justify-between shadow-lg rounded-lg"
-          style={{ width: "300px", height: "150px", backgroundColor: "#FFB800E5" }}
-        >
-          <div className="flex flex-row gap-4 p-2 items-center justify-center mt-4 break-words">
-            <div
-              className="flex flex-col items-center justify-center rounded-full p-3"
-              style={{ backgroundColor: "#DEB23F", height: "60px", width: "60px" }}
-            >
-              <Image
-                src={images.pending_new_service_applications}
-                alt={""}
-                width={50}
-                height={50}
-              />
-            </div>
-            <div className="flex flex-col gap-2 w-[50%]">
-              <p className="text-3xl text-white font-bold">35</p>
-              <p className="text-xs text-white font-medium">Pending</p>
-            </div>
-          </div>
-          <AreaChart width={300} height={40} data={data}>
-            <Area type="monotone" dataKey="num" stroke="#FFFFFF" fill="#FFD771" />
-          </AreaChart>
-        </div>
-
-        {/* TOTAL INSTALLATION */}
-        <div
-          className="flex flex-col justify-between shadow-lg rounded-lg"
-          style={{ width: "300px", height: "150px", backgroundColor: "#FD2630A3" }}
-        >
-          <div className="flex flex-row gap-4 p-2 items-center justify-center mt-4 break-words">
-            <div
-              className="flex flex-col items-center justify-center rounded-full p-3"
-              style={{ backgroundColor: "#4E0D101A", height: "60px", width: "60px" }}
-            >
-              <Image
-                src={images.disapproved_new_service_applications}
-                alt={""}
-                width={50}
-                height={50}
-              />
-            </div>
-            <div className="flex flex-col gap-2 w-[50%]">
-              <p className="text-3xl text-white font-bold">20</p>
-              <p className="text-xs text-white font-medium ">Total Installation</p>
-            </div>
-          </div>
-          <AreaChart width={300} height={40} data={data}>
-            <Area type="monotone" dataKey="num" stroke="#FFFFFF" fill="#E7A8AB66" />
-          </AreaChart>
-        </div>
-      </div>
-
-      {/* CHARTS WITH CALENDAR */}
-      <div className="flex flex-row gap-8 m-4 justify-between">
-        <div className="flex flex-col gap-1">
-          <p className="text-sm" style={{ color: "#1E1E1E" }}>
-            Survey
-          </p>
+        {/* CHARTS */}
+        {/* <div className="flex flex-row gap-8 m-4 justify-between w-[100%]">
           <div
-            className="flex flex-col justify-center bg-white shadow-lg rounded-lg"
-            style={{ width: "300px", height: "300px" }}
+            className="flex flex-col justify-between shadow-lg rounded-lg"
+            style={{ width: "300px", height: "150px", backgroundColor: "#4582F9" }}
           >
-            <ChartContainer config={chartConfig} className="aspect-square max-h-[250px]">
-              <PieChart>
-                <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-                <Pie
-                  data={chartData1}
-                  dataKey="visitors"
-                  nameKey="browser"
-                  innerRadius={40}
-                  outerRadius={110}
-                  strokeWidth={5}
+            <div className="flex flex-row gap-4 p-2 items-center justify-center mt-4">
+              <div
+                className="flex flex-col items-center justify-center rounded-full p-3"
+                style={{ backgroundColor: "#3C73DA", height: "60px", width: "60px" }}
+              >
+                <Image src={images.new_service_applications} alt={""} width={50} height={50} />
+              </div>
+              <div className="flex flex-col gap-2 w-[50%]">
+                <p className="text-3xl text-white font-bold">124</p>
+                <p className="text-xs text-white font-medium break-words">New Applications</p>
+              </div>
+            </div>
+            <AreaChart width={300} height={40} data={data}>
+              <Area type="monotone" dataKey="num" stroke="#FFFFFF" fill="#87AEFB" />
+            </AreaChart>
+          </div>
+          <div
+            className="flex flex-col justify-between shadow-lg rounded-lg"
+            style={{ width: "300px", height: "150px", backgroundColor: "#00BC8B" }}
+          >
+            <div className="flex flex-row gap-4 p-2 items-center justify-center mt-4 break-words">
+              <div
+                className="flex flex-col items-center justify-center rounded-full p-3"
+                style={{ backgroundColor: "#05A282", height: "60px", width: "60px" }}
+              >
+                <Image
+                  src={images.approved_new_service_applications}
+                  alt={""}
+                  width={50}
+                  height={50}
                 />
-              </PieChart>
-            </ChartContainer>
+              </div>
+              <div className="flex flex-col gap-2 w-[50%]">
+                <p className="text-3xl text-white font-bold">89</p>
+                <p className="text-xs text-white font-medium ">Approved</p>
+              </div>
+            </div>
+            <AreaChart width={300} height={40} data={data}>
+              <Area type="monotone" dataKey="num" stroke="#FFFFFF" fill="#56D2B2" />
+            </AreaChart>
           </div>
-        </div>
-        <div className="flex flex-col gap-1">
-          <p className="text-sm " style={{ color: "#1E1E1E" }}>
-            Installation
-          </p>
           <div
-            className="flex flex-col justify-center bg-white shadow-lg rounded-lg"
-            style={{ width: "300px", height: "300px" }}
+            className="flex flex-col justify-between shadow-lg rounded-lg"
+            style={{ width: "300px", height: "150px", backgroundColor: "#FFB800E5" }}
           >
-            <ChartContainer config={chartConfig} className="aspect-square max-h-[250px]">
-              <PieChart>
-                <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-                <Pie
-                  data={chartData2}
-                  dataKey="visitors"
-                  nameKey="browser"
-                  innerRadius={40}
-                  outerRadius={110}
-                  strokeWidth={5}
+            <div className="flex flex-row gap-4 p-2 items-center justify-center mt-4 break-words">
+              <div
+                className="flex flex-col items-center justify-center rounded-full p-3"
+                style={{ backgroundColor: "#DEB23F", height: "60px", width: "60px" }}
+              >
+                <Image
+                  src={images.pending_new_service_applications}
+                  alt={""}
+                  width={50}
+                  height={50}
                 />
-              </PieChart>
-            </ChartContainer>
+              </div>
+              <div className="flex flex-col gap-2 w-[50%]">
+                <p className="text-3xl text-white font-bold">35</p>
+                <p className="text-xs text-white font-medium">Pending</p>
+              </div>
+            </div>
+            <AreaChart width={300} height={40} data={data}>
+              <Area type="monotone" dataKey="num" stroke="#FFFFFF" fill="#FFD771" />
+            </AreaChart>
           </div>
-        </div>
-        <div className="flex flex-col gap-1">
-          <p className="text-sm " style={{ color: "#1E1E1E" }}>
-            Orientation Schedule
-          </p>
           <div
-            className="bg-white shadow-lg rounded-lg p-4 flex flex-col gap-3"
-            style={{ width: "600px", height: "300px", overflowY: "scroll" }}
+            className="flex flex-col justify-between shadow-lg rounded-lg"
+            style={{ width: "300px", height: "150px", backgroundColor: "#FD2630A3" }}
           >
-            <button className="flex self-end p-2 hover:underline" style={{ color: "#2078C3" }}>
-              View All
-            </button>
-            <div
-              className="flex flex-row items-center justify-between p-3 rounded-sm"
-              style={{ border: "0.5px solid #98989880" }}
-            >
-              <div className="flex flex-row gap-5 items-center" style={{ color: "#1E1E1ECC" }}>
-                <UsersRound size={32} color="#4582f9" fill="#4582f9" />
-                <div className="flex flex-col">
-                  <h1 className="font-extrabold">Batch 1 Orientation</h1>
-                  <p className="text-xs">January 3, 2025 - 9:00-10:00 AM</p>
-                </div>
+            <div className="flex flex-row gap-4 p-2 items-center justify-center mt-4 break-words">
+              <div
+                className="flex flex-col items-center justify-center rounded-full p-3"
+                style={{ backgroundColor: "#4E0D101A", height: "60px", width: "60px" }}
+              >
+                <Image
+                  src={images.disapproved_new_service_applications}
+                  alt={""}
+                  width={50}
+                  height={50}
+                />
               </div>
-              <Badge style={{ backgroundColor: "#9FFACB", color: "#2DAD83" }}>available</Badge>
+              <div className="flex flex-col gap-2 w-[50%]">
+                <p className="text-3xl text-white font-bold">20</p>
+                <p className="text-xs text-white font-medium ">Total Installation</p>
+              </div>
             </div>
+            <AreaChart width={300} height={40} data={data}>
+              <Area type="monotone" dataKey="num" stroke="#FFFFFF" fill="#E7A8AB66" />
+            </AreaChart>
+          </div>
+        </div> */}
 
+        {/* CHARTS WITH CALENDAR */}
+        <div className="flex flex-row gap-8 m-4 justify-between">
+          <div className="flex flex-col gap-1">
+            <p className="text-sm" style={{ color: "#1E1E1E" }}>
+              Survey
+            </p>
             <div
-              className="flex flex-row items-center justify-between p-3 rounded-sm"
-              style={{ border: "0.5px solid #98989880" }}
+              className="flex flex-col justify-center bg-white shadow-lg rounded-lg"
+              style={{ width: "300px", height: "300px" }}
             >
-              <div className="flex flex-row gap-5 items-center" style={{ color: "#1E1E1ECC" }}>
-                <UsersRound size={32} color="#4582f9" fill="#4582f9" />
-                <div className="flex flex-col">
-                  <h1 className="font-extrabold">Batch 1 Orientation</h1>
-                  <p className="text-xs">January 3, 2025 - 9:00-10:00 AM</p>
-                </div>
-              </div>
-              <Badge style={{ backgroundColor: "#9FFACB", color: "#2DAD83" }}>available</Badge>
+              <ChartContainer config={chartConfig} className="aspect-square max-h-[250px]">
+                <PieChart>
+                  <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+                  <Pie
+                    data={chartData1}
+                    dataKey="visitors"
+                    nameKey="browser"
+                    innerRadius={40}
+                    outerRadius={110}
+                    strokeWidth={5}
+                  />
+                </PieChart>
+              </ChartContainer>
             </div>
-
+          </div>
+          <div className="flex flex-col gap-1">
+            <p className="text-sm " style={{ color: "#1E1E1E" }}>
+              Installation
+            </p>
             <div
-              className="flex flex-row items-center justify-between p-3 rounded-sm"
-              style={{ border: "0.5px solid #98989880" }}
+              className="flex flex-col justify-center bg-white shadow-lg rounded-lg"
+              style={{ width: "300px", height: "300px" }}
             >
-              <div className="flex flex-row gap-5 items-center" style={{ color: "#1E1E1ECC" }}>
-                <UsersRound size={32} color="#4582f9" fill="#4582f9" />
-                <div className="flex flex-col">
-                  <h1 className="font-extrabold">Batch 1 Orientation</h1>
-                  <p className="text-xs">January 3, 2025 - 9:00-10:00 AM</p>
-                </div>
-              </div>
-              <Badge style={{ backgroundColor: "#9FFACB", color: "#2DAD83" }}>available</Badge>
+              <ChartContainer config={chartConfig} className="aspect-square max-h-[250px]">
+                <PieChart>
+                  <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
+                  <Pie
+                    data={chartData2}
+                    dataKey="visitors"
+                    nameKey="browser"
+                    innerRadius={40}
+                    outerRadius={110}
+                    strokeWidth={5}
+                  />
+                </PieChart>
+              </ChartContainer>
             </div>
-
+          </div>
+          <div className="flex flex-col gap-1">
+            <p className="text-sm " style={{ color: "#1E1E1E" }}>
+              Orientation Schedule
+            </p>
             <div
-              className="flex flex-row items-center justify-between p-3 rounded-sm"
-              style={{ border: "0.5px solid #98989880" }}
+              className="bg-white shadow-lg rounded-lg p-4 flex flex-col gap-3"
+              style={{ width: "600px", height: "300px", overflowY: "scroll" }}
             >
-              <div className="flex flex-row gap-5 items-center" style={{ color: "#1E1E1ECC" }}>
-                <UsersRound size={32} color="#4582f9" fill="#4582f9" />
-                <div className="flex flex-col">
-                  <h1 className="font-extrabold">Batch 1 Orientation</h1>
-                  <p className="text-xs">January 3, 2025 - 9:00-10:00 AM</p>
+              <button className="flex self-end p-2 hover:underline" style={{ color: "#2078C3" }}>
+                View All
+              </button>
+              <div
+                className="flex flex-row items-center justify-between p-3 rounded-sm"
+                style={{ border: "0.5px solid #98989880" }}
+              >
+                <div className="flex flex-row gap-5 items-center" style={{ color: "#1E1E1ECC" }}>
+                  <UsersRound size={32} color="#4582f9" fill="#4582f9" />
+                  <div className="flex flex-col">
+                    <h1 className="font-extrabold">Batch 1 Orientation</h1>
+                    <p className="text-xs">January 3, 2025 - 9:00-10:00 AM</p>
+                  </div>
                 </div>
+                <Badge style={{ backgroundColor: "#9FFACB", color: "#2DAD83" }}>available</Badge>
               </div>
-              <Badge style={{ backgroundColor: "#9FFACB", color: "#2DAD83" }}>available</Badge>
+
+              <div
+                className="flex flex-row items-center justify-between p-3 rounded-sm"
+                style={{ border: "0.5px solid #98989880" }}
+              >
+                <div className="flex flex-row gap-5 items-center" style={{ color: "#1E1E1ECC" }}>
+                  <UsersRound size={32} color="#4582f9" fill="#4582f9" />
+                  <div className="flex flex-col">
+                    <h1 className="font-extrabold">Batch 1 Orientation</h1>
+                    <p className="text-xs">January 3, 2025 - 9:00-10:00 AM</p>
+                  </div>
+                </div>
+                <Badge style={{ backgroundColor: "#9FFACB", color: "#2DAD83" }}>available</Badge>
+              </div>
+
+              <div
+                className="flex flex-row items-center justify-between p-3 rounded-sm"
+                style={{ border: "0.5px solid #98989880" }}
+              >
+                <div className="flex flex-row gap-5 items-center" style={{ color: "#1E1E1ECC" }}>
+                  <UsersRound size={32} color="#4582f9" fill="#4582f9" />
+                  <div className="flex flex-col">
+                    <h1 className="font-extrabold">Batch 1 Orientation</h1>
+                    <p className="text-xs">January 3, 2025 - 9:00-10:00 AM</p>
+                  </div>
+                </div>
+                <Badge style={{ backgroundColor: "#9FFACB", color: "#2DAD83" }}>available</Badge>
+              </div>
+
+              <div
+                className="flex flex-row items-center justify-between p-3 rounded-sm"
+                style={{ border: "0.5px solid #98989880" }}
+              >
+                <div className="flex flex-row gap-5 items-center" style={{ color: "#1E1E1ECC" }}>
+                  <UsersRound size={32} color="#4582f9" fill="#4582f9" />
+                  <div className="flex flex-col">
+                    <h1 className="font-extrabold">Batch 1 Orientation</h1>
+                    <p className="text-xs">January 3, 2025 - 9:00-10:00 AM</p>
+                  </div>
+                </div>
+                <Badge style={{ backgroundColor: "#9FFACB", color: "#2DAD83" }}>available</Badge>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      {/* ANOTHER CONTENT */}
-      <div className="flex flex-col gap-8 m-4 justify-between">
-        <div className="flex flex-col gap-1">
-          <p className="text-sm" style={{ color: "#1E1E1E" }}>
-            Service Connections
-          </p>
-          <div className="bg-white w-full h-[350px] shadow-lg rounded-lg">
-            {/* <div id="sampleMap" className="w-full h-full" style={{ borderRadius: "0.5rem" }} /> */}
+        {/* ANOTHER CONTENT */}
+        <div className="flex flex-col gap-8 m-4 justify-between">
+          <div className="flex flex-col gap-1">
+            <p className="text-sm" style={{ color: "#1E1E1E" }}>
+              Service Applications
+            </p>
+            <div className="bg-white w-full h-[350px] shadow-lg rounded-lg">
+              {/* <div id="sampleMap" className="w-full h-full" style={{ borderRadius: "0.5rem" }} /> */}
+            </div>
           </div>
         </div>
-      </div>
+      </PageContainer>
     </>
   );
 }

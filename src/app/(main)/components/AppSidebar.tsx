@@ -117,14 +117,19 @@ const data = {
       url: "/srms/nsa-dashboard/maintenance",
       icon: Settings,
       items: [
+        // {
+        //   title: "Barangay",
+        //   url: "/srms/nsa-dashboard/maintenance/barangay",
+        //   icon: Map,
+        // },
+        // {
+        //   title: "Purok",
+        //   url: "/srms/nsa-dashboard/maintenance/purok",
+        //   icon: Map,
+        // },
         {
-          title: "Barangay",
-          url: "/srms/nsa-dashboard/maintenance/barangay",
-          icon: Map,
-        },
-        {
-          title: "Purok",
-          url: "/srms/nsa-dashboard/maintenance/purok",
+          title: "Location",
+          url: "/srms/nsa-dashboard/maintenance/location",
           icon: Map,
         },
         {
