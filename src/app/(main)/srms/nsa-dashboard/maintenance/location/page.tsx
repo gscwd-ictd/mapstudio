@@ -1,3 +1,5 @@
+"use client";
+
 import PageContainer from "@mapstudio/app/(main)/components/PageContainer";
 import DynamicTable from "./DynamicTable";
 
