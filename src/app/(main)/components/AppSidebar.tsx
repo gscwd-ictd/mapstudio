@@ -142,6 +142,11 @@ const data = {
           url: "/srms/nsa-dashboard/maintenance/settings",
           icon: Settings2Icon,
         },
+        {
+          title: "Examples",
+          url: "/srms/nsa-dashboard/maintenance/examples",
+          icon: Settings2Icon,
+        },
       ],
     },
     // {

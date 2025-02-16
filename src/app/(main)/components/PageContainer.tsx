@@ -10,8 +10,7 @@ export default function PageContainer({
   className?: string;
 }) {
   return (
-    //  px-4 sm:px-6 lg:px-8
-    <div className={`bg-[#f1f1f1] max-w-8xl min-h-screen m-auto ${className}`}>
+    <div className={`bg-[#e6e6e6] max-w-8xl min-h-screen m-auto ${className}`}>
       <div className="p-3 w-auto">{children}</div>
     </div>
   );
