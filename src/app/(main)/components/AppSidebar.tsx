@@ -117,20 +117,17 @@ const data = {
       url: "/srms/nsa-dashboard/maintenance",
       icon: Settings,
       items: [
-        // {
-        //   title: "Barangay",
-        //   url: "/srms/nsa-dashboard/maintenance/barangay",
-        //   icon: Map,
-        // },
-        // {
-        //   title: "Purok",
-        //   url: "/srms/nsa-dashboard/maintenance/purok",
-        //   icon: Map,
-        // },
         {
           title: "Location",
           url: "/srms/nsa-dashboard/maintenance/location",
           icon: Map,
+          items: [
+            {
+              title: "Purok",
+              url: "/srms/nsa-dashboard/maintenance/purok",
+              icon: Map,
+            },
+          ],
         },
         {
           title: "Plumbing Fixtures Declaration",
@@ -219,6 +216,20 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                           </div>
                         </SidebarMenuButton>
                       </CollapsibleTrigger>
+                      {/* <CollapsibleContent>
+                        <SidebarMenuSub>
+                          {item.items?.map((subItem) => (
+                            <SidebarMenuSubItem key={subItem.title}>
+                              <SidebarMenuSubButton asChild isActive={pathname === subItem.url}>
+                                <Link href={subItem.url}>
+                                  {subItem.icon && <subItem.icon className="mr-2 size-4" />}
+                                  <span>{subItem.title}</span>
+                                </Link>
+                              </SidebarMenuSubButton>
+                            </SidebarMenuSubItem>
+                          ))}
+                        </SidebarMenuSub>
+                      </CollapsibleContent> */}
                       <CollapsibleContent>
                         <SidebarMenuSub>
                           {item.items?.map((subItem) => (
@@ -229,6 +240,29 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                                   <span>{subItem.title}</span>
                                 </Link>
                               </SidebarMenuSubButton>
+
+                              {/* Recursive rendering for subsubitems */}
+                              {subItem.items && subItem.items.length > 0 && (
+                                <CollapsibleContent>
+                                  <SidebarMenuSub>
+                                    {subItem.items.map((subSubItem) => (
+                                      <SidebarMenuSubItem key={subSubItem.title}>
+                                        <SidebarMenuSubButton
+                                          asChild
+                                          isActive={pathname === subSubItem.url}
+                                        >
+                                          <Link href={subSubItem.url}>
+                                            {subSubItem.icon && (
+                                              <subSubItem.icon className="mr-2 size-4" />
+                                            )}
+                                            <span>{subSubItem.title}</span>
+                                          </Link>
+                                        </SidebarMenuSubButton>
+                                      </SidebarMenuSubItem>
+                                    ))}
+                                  </SidebarMenuSub>
+                                </CollapsibleContent>
+                              )}
                             </SidebarMenuSubItem>
                           ))}
                         </SidebarMenuSub>
