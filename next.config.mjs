@@ -2,7 +2,13 @@
 const nextConfig = {
   //output: "standalone",
   images: {
-    domains: ["lamoderno.com"], // Add the hostname here
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "lamoderno.com",
+        pathname: "**",
+      },
+    ],
   },
 };
 

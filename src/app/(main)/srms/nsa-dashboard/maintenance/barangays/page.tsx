@@ -10,57 +10,8 @@ import { Eye } from "lucide-react";
 import { useMemo, useState, useEffect, useCallback } from "react";
 import { useForm } from "react-hook-form";
 
-type Barangay = {
-  id: string;
-  name: string;
-  created_at: string;
-  updated_at: string;
-  deleted_at: string;
-  purok: Purok[];
-};
-
-type Purok = {
-  id: string;
-  name: string;
-  created_at: string;
-  updated_at: string;
-  deleted_at: string;
-};
-
-type BarangayName = {
-  name: string;
-};
-
-type PurokName = {
-  barangayId: string;
-  name: string;
-};
-
-// const data: Barangay[] = [
-//   {
-//     id: "1",
-//     name: "Calumpang",
-//     created_at: "1",
-//     updated_at: "1",
-//     deleted_at: "1",
-//     purok: [
-//       {
-//         id: "1",
-//         name: "1",
-//         created_at: "1",
-//         updated_at: "1",
-//         deleted_at: "1",
-//       },
-//       {
-//         id: "2",
-//         name: "2",
-//         created_at: "2",
-//         updated_at: "2",
-//         deleted_at: "2",
-//       },
-//     ],
-//   },
-// ];
+import { Barangay, BarangayName } from "@mapstudio/app/utils/types/Location";
+import { SampleLocation } from "@mapstudio/app/utils/mock/SampleLocation";
 
 export default function LocationPage() {
   const [data, setData] = useState<Barangay[]>([]);
@@ -96,9 +47,10 @@ export default function LocationPage() {
     }, 300);
   };
 
-  const { register, handleSubmit } = useForm<PurokName>();
+  const { register, handleSubmit } = useForm<BarangayName>();
   const addBarangay = async (data: BarangayName) => {
     try {
+      // console.log(data);
       const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_API}/barangay`, data);
       console.log("Data submitted successfully:", response.data);
       setData((prevData) => [...prevData, response.data]);
@@ -106,20 +58,6 @@ export default function LocationPage() {
     } catch (error) {
       console.log("Data submitted:", data);
       console.log(`${process.env.NEXT_PUBLIC_BACKEND_API}/barangay`);
-      console.log("Error submitting data:", error);
-    }
-  };
-
-  const addPurok = async (data: PurokName) => {
-    try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_BACKEND_API}/purok`, data);
-      console.log("Data submitted successfully:", response.data);
-      // setData((prevData) => [...prevData, response.data]);
-      closeModal();
-      console.log("data", data);
-    } catch (error) {
-      console.log("Data submitted:", data);
-      console.log(`${process.env.NEXT_PUBLIC_BACKEND_API}/purok`);
       console.log("Error submitting data:", error);
     }
   };
@@ -133,6 +71,8 @@ export default function LocationPage() {
         setData(result.items);
       } catch (error) {
         console.error("Error fetching data:", error);
+        setLoading(false);
+      } finally {
         setLoading(false);
       }
     };
@@ -155,30 +95,37 @@ export default function LocationPage() {
       {
         id: "actions",
         header: "Actions",
-        cell: ({ row }) => (
-          <Button
-            variant="ghost"
-            size="sm"
-            onClick={() => openModal("view", row.original)}
-            aria-label="View barangay"
-          >
-            <Eye className="h-4 w-4" />
-          </Button>
-        ),
+        cell: ({ row }) => {
+          const barangayId = row.original.id;
+
+          return (
+            <Button
+              variant="ghost"
+              size="sm"
+              aria-label="View user"
+              onClick={() => {
+                // router.push(`barangays/${barangayId}`);
+                window.open(`barangays/${barangayId}`, "_blank");
+              }}
+            >
+              <Eye className="h-4 w-4" />
+            </Button>
+          );
+        },
       },
     ],
-    [openModal]
+    []
   );
 
   return (
     <>
       <PageContainer>
-        <h1 className="text-xl font-bold">Location</h1>
+        <h1 className="text-xl font-bold">Barangays</h1>
         <Button onClick={() => openModal("add", undefined, false)}>Add Barangay</Button>
-        <Button onClick={() => openModal("add", undefined, true)}>Add Purok</Button>
+        {/* <Button onClick={() => openModal("add", undefined, true)}>Add Purok</Button> */}
         <DynamicTable data={data} columns={columns} loading={loading} />
 
-        <Modal isOpen={activeModal === "view"} onClose={closeModal}>
+        {/* <Modal isOpen={activeModal === "view"} onClose={closeModal}>
           {selectedBarangay && (
             <div>
               <p>{selectedBarangay.name}</p>
@@ -192,10 +139,10 @@ export default function LocationPage() {
               </div>
             </div>
           )}
-        </Modal>
+        </Modal> */}
 
         <Modal isOpen={activeModal === "add" && isAddBarangayModalOpen} onClose={closeModal}>
-          <h2 className="text-xl font-bold mb-4">Add Barangay 1</h2>
+          <h2 className="text-xl font-bold mb-4">Add Barangay</h2>
           <form onSubmit={handleSubmit(addBarangay)} className="flex flex-col gap-1">
             <label htmlFor="name" className="sr-only">
               Name
@@ -214,7 +161,7 @@ export default function LocationPage() {
           </form>
         </Modal>
 
-        <Modal isOpen={activeModal === "add" && isAddPurokModalOpen} onClose={closeModal}>
+        {/* <Modal isOpen={activeModal === "add" && isAddPurokModalOpen} onClose={closeModal}>
           <h2 className="text-xl font-bold mb-4">Add Purok</h2>
           <form onSubmit={handleSubmit(addPurok)} className="flex flex-col gap-1">
             <label htmlFor="name" className="sr-only">
@@ -245,7 +192,7 @@ export default function LocationPage() {
               Submit
             </button>
           </form>
-        </Modal>
+        </Modal> */}
       </PageContainer>
     </>
   );
